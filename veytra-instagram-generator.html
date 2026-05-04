@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veytra Nutrition — Instagram Post Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #EAE6DE;
+      --cream-alt: #F0EDE7;
+      --green: #2D5016;
+      --green-dark: #1A3A0F;
+      --green-light: #3D6B20;
+      --white: #FFFFFF;
+      --gold: #C9A84C;
+      --navy: #1B2A4A;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Inter', sans-serif;
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--green);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    /* ── HEADER ─────────────────────────────────────────── */
+    .app-header {
+      background: var(--green);
+      color: var(--cream);
+      padding: 0 36px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .header-logo {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--cream);
+      letter-spacing: 0.3px;
+    }
+    .header-logo span { color: var(--gold); font-style: italic; }
+    .header-divider {
+      width: 1px; height: 20px;
+      background: rgba(234,230,222,0.2);
+    }
+    .header-sub {
+      font-size: 11px;
+      font-weight: 400;
+      color: rgba(234,230,222,0.45);
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+    .header-badge {
+      font-size: 10px;
+      font-weight: 500;
+      color: rgba(234,230,222,0.35);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ── LAYOUT ──────────────────────────────────────────── */
+    .app-body {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    /* ── SIDEBAR ─────────────────────────────────────────── */
+    .sidebar {
+      width: 288px;
+      min-width: 288px;
+      background: #F0EDE6;
+      border-right: 1px solid rgba(45,80,22,0.1);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      padding: 28px 20px;
+      gap: 28px;
+    }
+    .sidebar::-webkit-scrollbar { width: 4px; }
+    .sidebar::-webkit-scrollbar-thumb { background: rgba(45,80,22,0.15); border-radius: 2px; }
+
+    .section-label {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--green);
+      opacity: 0.4;
+      margin-bottom: 10px;
+    }
+
+    /* Template buttons */
+    .template-list { display: flex; flex-direction: column; gap: 4px; }
+
+    .tmpl-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 10px;
+      border-radius: 8px;
+      border: 1.5px solid transparent;
+      background: transparent;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s ease;
+      font-family: var(--sans);
+      width: 100%;
+    }
+    .tmpl-btn:hover:not(.active) { background: rgba(45,80,22,0.06); }
+    .tmpl-btn.active {
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    .tmpl-icon {
+      width: 34px; height: 34px;
+      border-radius: 6px;
+      flex-shrink: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .tmpl-info { flex: 1; min-width: 0; }
+    .tmpl-name {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--green);
+      line-height: 1.2;
+    }
+    .tmpl-btn.active .tmpl-name { color: white; }
+    .tmpl-desc {
+      font-size: 10.5px;
+      color: var(--green);
+      opacity: 0.5;
+      margin-top: 2px;
+    }
+    .tmpl-btn.active .tmpl-desc { color: rgba(255,255,255,0.6); opacity: 1; }
+
+    /* Variant pills */
+    .variant-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .vpill {
+      padding: 6px 13px;
+      border-radius: 100px;
+      border: 1.5px solid rgba(45,80,22,0.22);
+      background: transparent;
+      font-family: var(--sans);
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--green);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .vpill:hover:not(.active) {
+      border-color: var(--green);
+      background: rgba(45,80,22,0.05);
+    }
+    .vpill.active {
+      background: var(--green);
+      border-color: var(--green);
+      color: white;
+    }
+
+    /* Action buttons */
+    .action-group { display: flex; flex-direction: column; gap: 7px; }
+    .btn {
+      padding: 11px 16px;
+      border-radius: 8px;
+      font-family: var(--sans);
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.15s;
+      letter-spacing: 0.2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+    }
+    .btn-primary { background: var(--green); color: white; }
+    .btn-primary:hover { background: var(--green-light); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(45,80,22,0.3); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-primary:disabled { opacity: 0.55; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--green);
+      border: 1.5px solid rgba(45,80,22,0.25);
+    }
+    .btn-secondary:hover { background: rgba(45,80,22,0.05); border-color: var(--green); }
+    .btn.success { background: #3d8c40 !important; color: white !important; border-color: #3d8c40 !important; }
+
+    /* ── MAIN AREA ───────────────────────────────────────── */
+    .main-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      padding: 36px 40px;
+      gap: 28px;
+      min-width: 0;
+      align-items: center;
+    }
+    .main-area::-webkit-scrollbar { width: 6px; }
+    .main-area::-webkit-scrollbar-thumb { background: rgba(45,80,22,0.12); border-radius: 3px; }
+
+    .preview-label {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--green);
+      opacity: 0.38;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .preview-viewport {
+      width: 540px;
+      height: 540px;
+      overflow: hidden;
+      border-radius: 6px;
+      box-shadow:
+        0 0 0 1px rgba(45,80,22,0.08),
+        0 8px 24px rgba(45,80,22,0.08),
+        0 24px 60px rgba(0,0,0,0.12);
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    #post-canvas {
+      width: 1080px;
+      height: 1080px;
+      transform: scale(0.5);
+      transform-origin: top left;
+      position: absolute;
+      top: 0; left: 0;
+    }
+
+    /* Copy sections */
+    .copy-row {
+      width: 540px;
+    }
+    .copy-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .copy-box {
+      background: white;
+      border: 1px solid rgba(45,80,22,0.1);
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 12px;
+      line-height: 1.65;
+      color: #3a3a3a;
+      white-space: pre-line;
+      font-family: var(--sans);
+      max-height: 120px;
+      overflow-y: auto;
+    }
+    .copy-box::-webkit-scrollbar { width: 3px; }
+    .copy-box::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 2px; }
+    .hashtag-box { color: var(--green); font-size: 11.5px; max-height: 70px; }
+  </style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══════════════════════════════════════════════════════ -->
+<header class="app-header">
+  <div class="header-brand">
+    <div class="header-logo">Veytra <span>Nutrition</span></div>
+    <div class="header-divider"></div>
+    <div class="header-sub">Instagram Generator</div>
+  </div>
+  <div class="header-badge">1080 × 1080 px</div>
+</header>
+
+<!-- ═══ BODY ══════════════════════════════════════════════════════════ -->
+<div class="app-body">
+
+  <!-- ─── SIDEBAR ─────────────────────────────────────────────────── -->
+  <aside class="sidebar">
+
+    <!-- Template picker -->
+    <div>
+      <div class="section-label">Template</div>
+      <div class="template-list" id="template-list">
+
+        <button class="tmpl-btn active" data-t="hero" onclick="selectTemplate('hero')">
+          <div class="tmpl-icon">
+            <div style="width:100%;height:100%;background:#EAE6DE;position:relative;">
+              <div style="position:absolute;bottom:0;right:0;width:10px;height:10px;background:#2D5016;"></div>
+              <div style="position:absolute;top:5px;left:5px;width:14px;height:2px;background:#2D5016;opacity:0.4;border-radius:1px;"></div>
+              <div style="position:absolute;top:11px;left:5px;width:10px;height:2px;background:#2D5016;opacity:0.25;border-radius:1px;"></div>
+            </div>
+          </div>
+          <div class="tmpl-info">
+            <div class="tmpl-name">Product Hero</div>
+            <div class="tmpl-desc">Clean product intro</div>
+          </div>
+        </button>
+
+        <button class="tmpl-btn" data-t="botanical" onclick="selectTemplate('botanical')">
+          <div class="tmpl-icon">
+            <div style="width:100%;height:100%;background:#1A3A0F;position:relative;">
+              <div style="position:absolute;top:5px;left:5px;width:10px;height:2px;background:#C9A84C;border-radius:1px;"></div>
+              <div style="position:absolute;top:12px;left:5px;width:20px;height:1.5px;background:rgba(255,255,255,0.25);border-radius:1px;"></div>
+              <div style="position:absolute;top:17px;left:5px;width:16px;height:1.5px;background:rgba(255,255,255,0.15);border-radius:1px;"></div>
+              <div style="position:absolute;top:22px;left:5px;width:18px;height:1.5px;background:rgba(255,255,255,0.15);border-radius:1px;"></div>
+            </div>
+          </div>
+          <div class="tmpl-info">
+            <div class="tmpl-name">Dark Botanical</div>
+            <div class="tmpl-desc">Formula ingredients</div>
+          </div>
+        </button>
+
+        <button class="tmpl-btn" data-t="split" onclick="selectTemplate('split')">
+          <div class="tmpl-icon">
+            <div style="width:100%;height:100%;display:flex;overflow:hidden;border-radius:6px;">
+              <div style="flex:1;background:#2D5016;"></div>
+              <div style="flex:1;background:#EAE6DE;"></div>
+            </div>
+          </div>
+          <div class="tmpl-info">
+            <div class="tmpl-name">Split Layout</div>
+            <div class="tmpl-desc">Visual + benefits</div>
+          </div>
+        </button>
+
+        <button class="tmpl-btn" data-t="quote" onclick="selectTemplate('quote')">
+          <div class="tmpl-icon">
+            <div style="width:100%;height:100%;background:#EAE6DE;display:flex;align-items:center;justify-content:center;">
+              <span style="font-family:Georgia,serif;font-size:22px;font-weight:700;color:#2D5016;line-height:1;">"</span>
+            </div>
+          </div>
+          <div class="tmpl-info">
+            <div class="tmpl-name">Bold Quote</div>
+            <div class="tmpl-desc">Empowerment post</div>
+          </div>
+        </button>
+
+        <button class="tmpl-btn" data-t="stat" onclick="selectTemplate('stat')">
+          <div class="tmpl-icon">
+            <div style="width:100%;height:100%;background:#2D5016;position:relative;">
+              <div style="position:absolute;top:5px;left:5px;width:12px;height:2px;background:#C9A84C;border-radius:1px;"></div>
+              <div style="position:absolute;top:12px;left:5px;right:5px;text-align:center;">
+                <span style="font-family:Georgia,serif;font-size:12px;font-weight:900;color:rgba(255,255,255,0.8);">1/3</span>
+              </div>
+            </div>
+          </div>
+          <div class="tmpl-info">
+            <div class="tmpl-name">Stat Card</div>
+            <div class="tmpl-desc">Facts &amp; figures</div>
+          </div>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Variant picker -->
+    <div>
+      <div class="section-label">Variant</div>
+      <div class="variant-pills" id="variant-pills"></div>
+    </div>
+
+    <!-- Export -->
+    <div class="action-group">
+      <div class="section-label">Export</div>
+      <button id="btn-dl" class="btn btn-primary" onclick="downloadPost()">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v8M3 6.5l3.5 3.5 3.5-3.5M1 11.5h11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Download PNG
+      </button>
+      <button id="btn-cap" class="btn btn-secondary" onclick="copyCaption()">Copy Caption</button>
+      <button id="btn-tag" class="btn btn-secondary" onclick="copyHashtags()">Copy Hashtags</button>
+    </div>
+
+  </aside>
+
+  <!-- ─── MAIN ──────────────────────────────────────────────────────── -->
+  <main class="main-area">
+
+    <div>
+      <div class="preview-label">Live Preview — 1080 × 1080 px</div>
+      <div class="preview-viewport">
+        <div id="post-canvas"></div>
+      </div>
+    </div>
+
+    <div class="copy-row">
+      <div class="copy-header">
+        <span class="section-label" style="margin:0">Caption</span>
+      </div>
+      <div id="caption-box" class="copy-box"></div>
+    </div>
+
+    <div class="copy-row">
+      <div class="copy-header">
+        <span class="section-label" style="margin:0">Hashtags</span>
+      </div>
+      <div id="hashtags-box" class="copy-box hashtag-box"></div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ═══ SCRIPT ═══════════════════════════════════════════════════════ -->
+<script>
+
+/* ─── STATE ──────────────────────────────────────────────────────── */
+let currentTemplate = 'hero';
+let currentVariant  = 0;
+
+/* ─── CAPTIONS & HASHTAGS ────────────────────────────────────────── */
+const CAP = {
+  periReset: `If you've heard of Veytra but never tried it — start here.
+
+Peri Reset is a complete botanical formula built for one specific woman: the one in her 40s who knows something has shifted but hasn't found anything that actually works for her yet.
+
+Not a generic women's vitamin. Not another fish oil.
+
+A formula built around the herbs most researched for the perimenopause transition.
+
+2 capsules a day. That's it.
+
+Subscribe from $39/mo — free shipping, cancel anytime. Link in bio.`,
+
+  clarity: `Brain fog in your 40s is real.
+
+Forgetting words mid-sentence. Rereading the same email three times. Walking into a room and going completely blank.
+
+You are not imagining it. You are not losing your mind.
+
+Veytra Clarity. 1000mg Organic Lion's Mane to support focus, memory, and mental clarity every single day.
+
+Subscribe from $45/mo. Link in bio.`,
+
+  empowerment: `The mood swings. The brain fog. The rage that comes out of nowhere.
+
+The exhaustion that sleep does not fix. The feeling that you do not recognize yourself.
+
+None of this is a personality flaw.
+None of this is weakness.
+None of this is permanent.
+
+Your hormones are shifting. Your body is doing exactly what it does during perimenopause. And there is support made specifically for what you are going through.
+
+You haven't changed. Your hormones have.
+
+Link in bio.`
+};
+
+const TAG = {
+  periReset: `#perimenopause #perimeno #womenshealth #hormonehealth #over40 #midlifewomen #womenover40 #naturalwellness #hormonebalance #perimenopausesupport #botanicalsupplements #blackcohosh #womensupplements #feellikeyourself #veytranutrition`,
+  clarity:   `#brainfog #perimenopause #lionsmane #brainhealth #cognitivehealth #over40 #womenover40 #menopausebrain #focusandclarity #sharpat40 #perimenopausesupport #womenshealth #midlifewomen #veytranutrition #clarity`,
+  empowerment:`#perimenopause #youhaventchanged #hormonehealth #midlifewomen #womenover40 #over40 #perimenopausesupport #womenshealth #hormonalbalance #feellikeyourself #naturalwellness #veytranutrition #perimenopauseawareness #womensupplements`
+};
+
+/* ─── TEMPLATE DATA ──────────────────────────────────────────────── */
+const TEMPLATES = {
+  hero: {
+    variants: [
+      { label:'Peri Reset', product:'peri', headline:'Start here: What is Veytra Peri Reset?', sub:'If you've heard of Veytra but never tried it — start here.', cap:CAP.periReset, tag:TAG.periReset },
+      { label:'Clarity',    product:'clarity', headline:'Start here: What is Veytra Clarity?', sub:'Brain fog in your 40s is real. Here\'s what we made for it.', cap:CAP.clarity, tag:TAG.clarity }
+    ]
+  },
+  botanical: {
+    variants: [
+      {
+        label:'Peri Reset', product:'peri',
+        headline:'Peri Reset is a complete botanical formula designed to support you through every stage of perimenopause.',
+        subhead:'Each capsule contains:',
+        bullets:[
+          'Black Cohosh 160mg to support menopausal wellness',
+          'Red Clover 400mg for hormonal balance support',
+          'Sage Leaf 200mg traditionally used for hot flash support',
+          'Chasteberry 50mg to support hormonal rhythm',
+          'Dong Quai 150mg — traditional women\'s tonic'
+        ],
+        closing:'Instead of managing symptoms alone, Peri Reset brings botanical support together in one daily habit.',
+        cap:CAP.periReset, tag:TAG.periReset
+      },
+      {
+        label:'Clarity', product:'clarity',
+        headline:'Clarity delivers 1000mg of Organic Lion\'s Mane — traditionally valued for mental clarity and widely studied for cognitive wellness.',
+        subhead:'Each serving contains:',
+        bullets:[
+          '1000mg Organic Lion\'s Mane per serving',
+          'Standardized to 40% polysaccharides',
+          '400mg active per serving',
+          'Fruiting body + mycelium',
+          '100% vegan capsules'
+        ],
+        closing:'Instead of pushing through the brain fog, Clarity gives your mind daily botanical support.',
+        cap:CAP.clarity, tag:TAG.clarity
+      }
+    ]
+  },
+  split: {
+    variants: [
+      {
+        label:'Peri Reset', product:'peri',
+        headline:'Veytra is made for women who still have everything to do.',
+        subhead:'That means every capsule is:',
+        bullets:['Botanically sourced ingredients','No artificial fillers or binders','Formulated for the perimenopause transition','30-day money back guarantee'],
+        closing:'You haven\'t changed. Your hormones have.',
+        cap:CAP.periReset, tag:TAG.periReset
+      },
+      {
+        label:'Clarity', product:'clarity',
+        headline:'Veytra Clarity is for the woman who used to be the sharpest person in the room.',
+        subhead:'Every serving supports:',
+        bullets:['Focus and mental clarity','Memory and word recall','Cognitive wellness','100% vegan, no fillers'],
+        closing:'Get your sharpness back.',
+        cap:CAP.clarity, tag:TAG.clarity
+      }
+    ]
+  },
+  quote: {
+    variants: [
+      { label:'Quote 1', line1:'You haven\'t changed.', line2:'Your hormones have.', cap:CAP.empowerment, tag:TAG.empowerment },
+      { label:'Quote 2', line1:'The rage isn\'t you.', line2:'It\'s perimenopause.',  cap:CAP.empowerment, tag:TAG.empowerment },
+      { label:'Quote 3', line1:'Still sharp.',          line2:'Still her.',            cap:CAP.empowerment, tag:TAG.empowerment }
+    ]
+  },
+  stat: {
+    variants: [
+      { label:'Fact 1', big:'1 in 3',    supporting:'Women experience significant mood changes during perimenopause. Most never get a straight answer about why.',      cap:CAP.empowerment, tag:TAG.empowerment },
+      { label:'Fact 2', big:'40s',        supporting:'Perimenopause can begin in your early 40s — often years before your period actually changes.',                     cap:CAP.empowerment, tag:TAG.empowerment },
+      { label:'Fact 3', big:'Brain fog',  supporting:'One of the most common experiences of perimenopause. And one of the least talked about.',                          cap:CAP.empowerment, tag:TAG.empowerment }
+    ]
+  }
+};
+
+/* ─── RENDER HELPERS ─────────────────────────────────────────────── */
+
+function capsule(cx, cy, w, h, rot, isNavy) {
+  const grad = isNavy
+    ? 'linear-gradient(155deg,#2C456E 0%,#1B2A4A 55%,#0F1B30 100%)'
+    : 'linear-gradient(155deg,#4A7C28 0%,#2D5016 55%,#1C3A0A 100%)';
+  const shineW = Math.round(w * 0.22);
+  const shineH = Math.round(h * 0.22);
+  return `<div style="position:absolute;left:${cx}px;top:${cy}px;width:${w}px;height:${h}px;border-radius:${w/2}px;background:${grad};box-shadow:5px 10px 28px rgba(0,0,0,0.22),inset 0 2px 0 rgba(255,255,255,0.1);transform:translate(-50%,-50%) rotate(${rot}deg);">
+    <div style="position:absolute;top:50%;left:0;right:0;height:1.5px;background:rgba(255,255,255,0.18);transform:translateY(-50%);"></div>
+    <div style="position:absolute;top:15px;left:13px;width:${shineW}px;height:${shineH}px;border-radius:50%;background:rgba(255,255,255,0.11);"></div>
+  </div>`;
+}
+
+function heroIllustration(isNavy) {
+  return `
+    <div style="position:absolute;width:360px;height:360px;border-radius:50%;background:${isNavy?'rgba(27,42,74,0.07)':'rgba(45,80,22,0.07)'};left:540px;top:215px;transform:translate(-50%,-50%);"></div>
+    <div style="position:absolute;width:480px;height:480px;border-radius:50%;background:${isNavy?'rgba(27,42,74,0.035)':'rgba(45,80,22,0.035)'};left:540px;top:215px;transform:translate(-50%,-50%);"></div>
+    ${capsule(540, 215, 75, 210, -12, isNavy)}
+    ${capsule(635, 175, 62, 178, 18,  isNavy)}
+    ${capsule(450, 195, 56, 162, -28, isNavy)}
+  `;
+}
+
+function splitIllustration(isNavy) {
+  const bg     = isNavy ? '#1B2A4A' : '#2D5016';
+  const bgFade = isNavy ? 'rgba(27,42,74,0.07)' : 'rgba(45,80,22,0.07)';
+  return `
+    <div style="position:absolute;width:320px;height:320px;border-radius:50%;background:${bgFade};left:230px;top:540px;transform:translate(-50%,-50%);"></div>
+    <div style="position:absolute;width:220px;height:220px;border-radius:50%;background:${isNavy?'rgba(27,42,74,0.05)':'rgba(45,80,22,0.05)'};left:230px;top:540px;transform:translate(-50%,-50%);"></div>
+    ${capsule(230, 540,  82, 240, -18, isNavy)}
+    ${capsule(310, 475,  60, 175,  16, isNavy)}
+    <div style="position:absolute;left:60px;bottom:90px;right:60px;text-align:center;">
+      <p style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:${bg};opacity:0.28;">${isNavy?'VEYTRA CLARITY':'PERI RESET'}</p>
+    </div>
+  `;
+}
+
+/* ─── TEMPLATE RENDERERS ─────────────────────────────────────────── */
+
+function renderHero(v) {
+  const isNavy = v.product === 'clarity';
+  const ink    = isNavy ? '#1B2A4A' : '#2D5016';
+  const ring   = isNavy ? 'rgba(27,42,74,0.1)' : 'rgba(45,80,22,0.1)';
+
+  return `<div style="width:1080px;height:1080px;background:#EAE6DE;position:relative;overflow:hidden;font-family:'Inter',sans-serif;">
+
+  <!-- Corner rings -->
+  <div style="position:absolute;top:-70px;right:-70px;width:300px;height:300px;border-radius:50%;border:1.5px solid ${ring};"></div>
+  <div style="position:absolute;top:-20px;right:-20px;width:190px;height:190px;border-radius:50%;border:1px solid ${ring};opacity:0.5;"></div>
+  <div style="position:absolute;bottom:-50px;left:-50px;width:220px;height:220px;border-radius:50%;border:1px solid ${ring};opacity:0.4;"></div>
+
+  <!-- Top text block -->
+  <div style="position:absolute;top:92px;left:92px;right:92px;">
+    <p style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:${ink};opacity:0.42;margin-bottom:24px;">Veytra Nutrition</p>
+    <h1 style="font-family:'Playfair Display',Georgia,serif;font-size:62px;font-weight:600;color:${ink};line-height:1.14;max-width:700px;letter-spacing:-0.5px;">${v.headline}</h1>
+  </div>
+
+  <!-- Capsule illustration -->
+  <div style="position:absolute;top:370px;left:0;right:0;height:460px;">
+    ${heroIllustration(isNavy)}
+  </div>
+
+  <!-- Subcaption -->
+  <div style="position:absolute;bottom:128px;left:92px;right:92px;">
+    <div style="width:38px;height:1.5px;background:${ink};opacity:0.22;margin-bottom:18px;"></div>
+    <p style="font-family:'Inter',sans-serif;font-size:20px;font-weight:300;color:${ink};opacity:0.7;font-style:italic;line-height:1.5;max-width:560px;">${v.sub}</p>
+  </div>
+
+  <!-- Brand name -->
+  <div style="position:absolute;bottom:62px;left:0;right:0;text-align:center;">
+    <p style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:${ink};opacity:0.32;">VEYTRA NUTRITION</p>
+  </div>
+</div>`;
+}
+
+function renderBotanical(v) {
+  const isNavy = v.product === 'clarity';
+  const bullets = v.bullets.map(b => `
+    <div style="display:flex;align-items:flex-start;gap:15px;margin-bottom:17px;">
+      <span style="color:#C9A84C;font-size:17px;line-height:1.55;flex-shrink:0;">—</span>
+      <p style="font-family:'Inter',sans-serif;font-size:18.5px;font-weight:300;color:rgba(255,255,255,0.82);line-height:1.55;">${b}</p>
+    </div>`).join('');
+
+  return `<div style="width:1080px;height:1080px;background:#1A3A0F;position:relative;overflow:hidden;font-family:'Inter',sans-serif;">
+
+  <!-- Organic texture blobs -->
+  <div style="position:absolute;top:-120px;left:-100px;width:550px;height:550px;border-radius:40% 60% 65% 35%/40% 55% 45% 60%;background:radial-gradient(ellipse,rgba(255,255,255,0.028) 0%,transparent 68%);"></div>
+  <div style="position:absolute;bottom:-100px;right:-80px;width:480px;height:480px;border-radius:60% 40% 35% 65%/55% 45% 55% 45%;background:radial-gradient(ellipse,rgba(255,255,255,0.02) 0%,transparent 65%);"></div>
+  <div style="position:absolute;top:35%;right:8%;width:280px;height:280px;border-radius:50%;background:radial-gradient(ellipse,rgba(201,168,76,0.055) 0%,transparent 68%);"></div>
+  <!-- Subtle vein lines -->
+  <div style="position:absolute;top:0;left:180px;width:1px;height:100%;background:linear-gradient(to bottom,transparent,rgba(255,255,255,0.025) 30%,rgba(255,255,255,0.025) 70%,transparent);"></div>
+
+  <!-- Gold top accent -->
+  <div style="position:absolute;top:76px;left:92px;width:52px;height:2px;background:#C9A84C;border-radius:1px;"></div>
+
+  <!-- Content wrapper -->
+  <div style="position:absolute;top:92px;bottom:76px;left:92px;right:92px;display:flex;flex-direction:column;justify-content:space-between;">
+
+    <!-- Top -->
+    <div>
+      <p style="font-family:'Inter',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:4.5px;text-transform:uppercase;color:#C9A84C;margin-top:26px;margin-bottom:28px;">The Formula</p>
+      <h1 style="font-family:'Playfair Display',Georgia,serif;font-size:40px;font-weight:600;color:white;line-height:1.24;margin-bottom:44px;max-width:860px;letter-spacing:-0.2px;">${v.headline}</h1>
+      <p style="font-family:'Inter',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,0.38);margin-bottom:20px;">${v.subhead}</p>
+      <div>${bullets}</div>
+    </div>
+
+    <!-- Bottom -->
+    <div>
+      <div style="width:100%;height:1px;background:rgba(255,255,255,0.09);margin-bottom:22px;"></div>
+      <p style="font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:400;font-style:italic;color:rgba(255,255,255,0.65);line-height:1.5;margin-bottom:28px;">"${v.closing}"</p>
+      <p style="font-family:'Inter',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,0.28);">VEYTRA NUTRITION</p>
+    </div>
+
+  </div>
+</div>`;
+}
+
+function renderSplit(v) {
+  const isNavy = v.product === 'clarity';
+  const ink    = isNavy ? '#1B2A4A' : '#2D5016';
+  const sideBg = isNavy ? 'rgba(27,42,74,0.05)' : 'rgba(45,80,22,0.05)';
+  const sideBorder = isNavy ? 'rgba(27,42,74,0.08)' : 'rgba(45,80,22,0.08)';
+
+  const bullets = v.bullets.map(b => `
+    <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:22px;">
+      <span style="color:${ink};font-size:17px;line-height:1.6;flex-shrink:0;opacity:0.35;">—</span>
+      <p style="font-family:'Inter',sans-serif;font-size:20px;font-weight:300;color:${ink};line-height:1.55;">${b}</p>
+    </div>`).join('');
+
+  return `<div style="width:1080px;height:1080px;background:#EAE6DE;position:relative;overflow:hidden;font-family:'Inter',sans-serif;display:flex;">
+
+  <!-- Left illustration panel -->
+  <div style="width:450px;height:1080px;position:relative;flex-shrink:0;background:${sideBg};border-right:1px solid ${sideBorder};">
+    ${splitIllustration(isNavy)}
+  </div>
+
+  <!-- Right content panel -->
+  <div style="flex:1;padding:92px 76px 80px 68px;display:flex;flex-direction:column;justify-content:space-between;">
+
+    <div>
+      <p style="font-family:'Inter',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:${ink};opacity:0.38;margin-bottom:26px;">Veytra Nutrition</p>
+      <h1 style="font-family:'Playfair Display',Georgia,serif;font-size:46px;font-weight:600;color:${ink};line-height:1.2;margin-bottom:48px;letter-spacing:-0.3px;">${v.headline}</h1>
+      <p style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:${ink};opacity:0.38;margin-bottom:22px;">${v.subhead}</p>
+      <div>${bullets}</div>
+    </div>
+
+    <div>
+      <div style="width:38px;height:1.5px;background:${ink};opacity:0.2;margin-bottom:18px;"></div>
+      <p style="font-family:'Playfair Display',Georgia,serif;font-size:23px;font-weight:400;font-style:italic;color:${ink};line-height:1.5;">"${v.closing}"</p>
+    </div>
+
+  </div>
+</div>`;
+}
+
+function renderQuote(v) {
+  return `<div style="width:1080px;height:1080px;background:#EAE6DE;position:relative;overflow:hidden;font-family:'Inter',sans-serif;display:flex;align-items:center;justify-content:center;">
+
+  <!-- Radial glow background -->
+  <div style="position:absolute;top:-80px;left:-80px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(45,80,22,0.045) 0%,transparent 65%);"></div>
+  <div style="position:absolute;bottom:-60px;right:-60px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(45,80,22,0.03) 0%,transparent 65%);"></div>
+
+  <!-- Large decorative quote mark -->
+  <div style="position:absolute;top:68px;left:72px;font-family:'Playfair Display',Georgia,serif;font-size:220px;font-weight:800;color:rgba(45,80,22,0.055);line-height:1;pointer-events:none;">"</div>
+
+  <!-- Quote content -->
+  <div style="text-align:center;padding:0 110px;position:relative;z-index:1;">
+    <h1 style="font-family:'Playfair Display',Georgia,serif;font-size:80px;font-weight:700;color:#2D5016;line-height:1.12;letter-spacing:-1px;">${v.line1}</h1>
+    <div style="width:48px;height:2px;background:#C9A84C;margin:36px auto;border-radius:1px;"></div>
+    <h1 style="font-family:'Playfair Display',Georgia,serif;font-size:80px;font-weight:700;font-style:italic;color:#2D5016;line-height:1.12;letter-spacing:-1px;">${v.line2}</h1>
+  </div>
+
+  <!-- Brand -->
+  <div style="position:absolute;bottom:68px;left:0;right:0;text-align:center;">
+    <p style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:#2D5016;opacity:0.3;">VEYTRA NUTRITION</p>
+  </div>
+
+  <!-- Corner detail lines -->
+  <div style="position:absolute;bottom:100px;right:92px;width:50px;height:1px;background:rgba(45,80,22,0.15);"></div>
+  <div style="position:absolute;bottom:100px;right:142px;width:1px;height:50px;background:rgba(45,80,22,0.15);"></div>
+</div>`;
+}
+
+function renderStat(v) {
+  const len  = v.big.replace(/\s/g,'').length;
+  const fs   = len <= 3 ? '185px' : len <= 5 ? '155px' : '115px';
+  const ls   = len <= 3 ? '-4px' : len <= 5 ? '-3px' : '-1px';
+
+  return `<div style="width:1080px;height:1080px;background:#2D5016;position:relative;overflow:hidden;font-family:'Inter',sans-serif;display:flex;align-items:center;justify-content:center;">
+
+  <!-- Background texture -->
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 28% 18%,rgba(255,255,255,0.045) 0%,transparent 55%),radial-gradient(ellipse at 78% 82%,rgba(255,255,255,0.03) 0%,transparent 50%);"></div>
+
+  <!-- Gold top bar -->
+  <div style="position:absolute;top:84px;left:92px;width:76px;height:2.5px;background:#C9A84C;border-radius:2px;"></div>
+
+  <!-- Corner accents -->
+  <div style="position:absolute;top:84px;right:92px;width:1.5px;height:64px;background:rgba(201,168,76,0.3);"></div>
+  <div style="position:absolute;top:84px;right:92px;width:64px;height:1.5px;background:rgba(201,168,76,0.3);"></div>
+  <div style="position:absolute;bottom:84px;left:92px;width:64px;height:1.5px;background:rgba(201,168,76,0.18);"></div>
+
+  <!-- Center content -->
+  <div style="text-align:center;padding:0 120px;position:relative;z-index:1;">
+    <p style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:4.5px;text-transform:uppercase;color:rgba(255,255,255,0.38);margin-bottom:44px;">Did you know</p>
+
+    <h1 style="font-family:'Playfair Display',Georgia,serif;font-size:${fs};font-weight:800;color:white;line-height:0.92;letter-spacing:${ls};margin-bottom:48px;">${v.big}</h1>
+
+    <div style="width:56px;height:2.5px;background:#C9A84C;margin:0 auto 44px;border-radius:2px;"></div>
+
+    <p style="font-family:'Inter',sans-serif;font-size:23px;font-weight:300;color:rgba(255,255,255,0.72);line-height:1.62;max-width:560px;margin:0 auto;">${v.supporting}</p>
+  </div>
+
+  <!-- Brand -->
+  <div style="position:absolute;bottom:70px;left:0;right:0;text-align:center;">
+    <p style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,0.28);">VEYTRA NUTRITION</p>
+  </div>
+</div>`;
+}
+
+/* ─── MAIN RENDER ────────────────────────────────────────────────── */
+function render() {
+  const t = TEMPLATES[currentTemplate];
+  const v = t.variants[currentVariant];
+
+  let html = '';
+  switch (currentTemplate) {
+    case 'hero':      html = renderHero(v);      break;
+    case 'botanical': html = renderBotanical(v);  break;
+    case 'split':     html = renderSplit(v);      break;
+    case 'quote':     html = renderQuote(v);      break;
+    case 'stat':      html = renderStat(v);       break;
+  }
+
+  document.getElementById('post-canvas').innerHTML  = html;
+  document.getElementById('caption-box').textContent  = v.cap;
+  document.getElementById('hashtags-box').textContent = v.tag;
+}
+
+/* ─── UI CONTROLS ────────────────────────────────────────────────── */
+function buildVariantPills() {
+  const t     = TEMPLATES[currentTemplate];
+  const wrap  = document.getElementById('variant-pills');
+  wrap.innerHTML = t.variants.map((v, i) =>
+    `<button class="vpill${i === currentVariant ? ' active' : ''}" onclick="selectVariant(${i})">${v.label}</button>`
+  ).join('');
+}
+
+function selectTemplate(key) {
+  if (key === currentTemplate) return;
+  currentTemplate = key;
+  currentVariant  = 0;
+  document.querySelectorAll('.tmpl-btn').forEach(b => b.classList.toggle('active', b.dataset.t === key));
+  buildVariantPills();
+  render();
+}
+
+function selectVariant(i) {
+  currentVariant = i;
+  document.querySelectorAll('.vpill').forEach((p, idx) => p.classList.toggle('active', idx === i));
+  render();
+}
+
+/* ─── DOWNLOAD ───────────────────────────────────────────────────── */
+async function downloadPost() {
+  const btn = document.getElementById('btn-dl');
+  btn.textContent = 'Generating…';
+  btn.disabled = true;
+
+  await document.fonts.ready;
+
+  const orig  = document.getElementById('post-canvas');
+  const clone = orig.cloneNode(true);
+
+  Object.assign(clone.style, {
+    position: 'fixed',
+    left: '-99999px',
+    top: '0',
+    width: '1080px',
+    height: '1080px',
+    transform: 'none',
+    transformOrigin: 'top left'
+  });
+  document.body.appendChild(clone);
+
+  try {
+    await new Promise(r => setTimeout(r, 250));
+
+    const canvas = await html2canvas(clone, {
+      width: 1080,
+      height: 1080,
+      scale: 1,
+      useCORS: true,
+      allowTaint: true,
+      logging: false,
+      backgroundColor: null
+    });
+
+    const t  = TEMPLATES[currentTemplate];
+    const v  = t.variants[currentVariant];
+    const nm = `veytra-${currentTemplate}-${v.label.toLowerCase().replace(/\s+/g,'-')}.png`;
+
+    const a = document.createElement('a');
+    a.download = nm;
+    a.href = canvas.toDataURL('image/png');
+    a.click();
+
+  } catch (e) {
+    console.error(e);
+    alert('Download failed — please try again.');
+  } finally {
+    document.body.removeChild(clone);
+    btn.innerHTML = `<svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v8M3 6.5l3.5 3.5 3.5-3.5M1 11.5h11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Download PNG`;
+    btn.disabled = false;
+  }
+}
+
+/* ─── COPY ───────────────────────────────────────────────────────── */
+async function copyText(text, btnId, originalLabel) {
+  try {
+    await navigator.clipboard.writeText(text);
+    const btn = document.getElementById(btnId);
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('success');
+    setTimeout(() => {
+      btn.textContent = originalLabel;
+      btn.classList.remove('success');
+    }, 2000);
+  } catch (e) {
+    alert('Copy failed — please copy the text manually.');
+  }
+}
+
+function copyCaption() {
+  const v = TEMPLATES[currentTemplate].variants[currentVariant];
+  copyText(v.cap, 'btn-cap', 'Copy Caption');
+}
+
+function copyHashtags() {
+  const v = TEMPLATES[currentTemplate].variants[currentVariant];
+  copyText(v.tag, 'btn-tag', 'Copy Hashtags');
+}
+
+/* ─── INIT ───────────────────────────────────────────────────────── */
+buildVariantPills();
+render();
+
+</script>
+</body>
+</html>

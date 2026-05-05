@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taxation - The Sale of Property</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #111; font-family: 'Montserrat', sans-serif; }
+
+  .ad {
+    width: 720px;
+    background: #f0fbf9;
+  }
+
+  .hero {
+    background: #ffffff;
+    padding: 30px 34px 20px;
+    text-align: center;
+    border-bottom: 5px solid #0a9e8f;
+  }
+
+  .lbl-taxation {
+    font-size: 62px;
+    font-weight: 900;
+    color: #0a9e8f;
+    letter-spacing: 5px;
+    line-height: 1.0;
+  }
+  .lbl-taxation .pct { color: #cc1100; }
+
+  .lbl-sale {
+    font-size: 66px;
+    font-weight: 900;
+    color: #1a1a1a;
+    line-height: 1.1;
+    margin: 6px 0 14px;
+    letter-spacing: -1px;
+  }
+
+  .hero-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+  }
+
+  .house-emoji {
+    font-size: 90px;
+    line-height: 1;
+  }
+
+  .hero-right {
+    text-align: left;
+    padding-bottom: 10px;
+  }
+
+  .subtitle {
+    font-size: 17px;
+    font-style: italic;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .tag-badge {
+    display: inline-block;
+    background: #0a9e8f;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 7px 16px;
+    border-radius: 3px;
+  }
+
+  .main { padding: 24px 28px 22px; }
+
+  .table-wrap {
+    border: 3px solid #0a9e8f;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  table.tax-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+  }
+
+  .th-blank {
+    background: #fff;
+    width: 190px;
+    border-right: 3px solid #0a9e8f;
+    padding: 18px 0;
+  }
+
+  .th-col {
+    background: #0a9e8f;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 20px 18px;
+    text-align: center;
+    border-left: 3px solid #0d8b7e;
+    line-height: 1.4;
+  }
+
+  .row-label {
+    background: #0a9e8f;
+    color: #fff;
+    font-size: 19px;
+    font-weight: 700;
+    padding: 20px 18px;
+    border-top: 3px solid #0d8b7e;
+    vertical-align: top;
+    line-height: 1.45;
+  }
+
+  .row-val {
+    border-left: 3px solid #0a9e8f;
+    border-top: 2px solid #c5eae4;
+    padding: 18px 16px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1a1a1a;
+    background: #fff;
+    line-height: 1.65;
+    vertical-align: top;
+  }
+
+  .row-val.shade { background: #f6fdfc; }
+  .row-val strong { color: #0a7c6f; font-weight: 800; }
+  .zero { color: #0a9e8f; font-size: 30px; font-weight: 900; }
+
+  .tagline-box {
+    margin-top: 20px;
+    background: #1a1a1a;
+    border-radius: 8px;
+    padding: 18px 26px;
+    text-align: center;
+    position: relative;
+  }
+  .tagline-box::before {
+    content: '';
+    position: absolute;
+    left: 24px; top: 50%;
+    transform: translateY(-50%);
+    width: 36px; height: 4px;
+    background: #f5c800;
+    border-radius: 2px;
+  }
+  .tagline-box::after {
+    content: '';
+    position: absolute;
+    right: 24px; top: 50%;
+    transform: translateY(-50%);
+    width: 36px; height: 4px;
+    background: #f5c800;
+    border-radius: 2px;
+  }
+  .tagline-box p {
+    font-size: 21px;
+    font-weight: 700;
+    color: #f5c800;
+    font-style: italic;
+  }
+
+  .contact-bar {
+    background: #0a7c6f;
+    padding: 18px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .c-left .name {
+    font-size: 24px;
+    font-weight: 800;
+    color: #fff;
+  }
+  .c-left .role {
+    font-size: 15px;
+    color: rgba(255,255,255,0.95);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 5px;
+    font-weight: 700;
+  }
+  .c-right { text-align: right; }
+  .c-right .info {
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+    word-break: break-all;
+    overflow-wrap: break-word;
+  }
+  .c-right .region {
+    font-size: 16px;
+    font-style: italic;
+    color: rgba(255,255,255,0.95);
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+<div class="ad">
+
+  <div class="hero">
+    <div class="lbl-taxation">TA<span class="pct">%</span>ATION</div>
+    <div class="lbl-sale">The Sale of Property</div>
+    <div class="hero-row">
+      <div class="house-emoji">🏠</div>
+      <div class="hero-right">
+        <div class="subtitle">(Land, Building, Residential Property, Real Estate)</div>
+        <div class="tag-badge">Canadian Tax Guide</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="table-wrap">
+      <table class="tax-table">
+        <tr>
+          <td class="th-blank"></td>
+          <th class="th-col">Primary<br>Residence</th>
+          <th class="th-col">Investment /<br>Rental Property</th>
+        </tr>
+        <tr>
+          <td class="row-label">Holding Period</td>
+          <td class="row-val">Any duration</td>
+          <td class="row-val shade">Any duration</td>
+        </tr>
+        <tr>
+          <td class="row-label">Tax Treatment</td>
+          <td class="row-val">Fully tax-free under the <strong>Principal Residence Exemption (PRE)</strong></td>
+          <td class="row-val shade"><strong>50%</strong> of capital gain included in taxable income (capital gains inclusion rate)</td>
+        </tr>
+        <tr>
+          <td class="row-label">Carry Forward of Losses</td>
+          <td class="row-val">Not applicable</td>
+          <td class="row-val shade">Capital losses offset capital gains. Excess carried forward <strong>indefinitely</strong></td>
+        </tr>
+        <tr>
+          <td class="row-label">Tax %</td>
+          <td class="row-val"><span class="zero">0%</span></td>
+          <td class="row-val shade">Your <strong>marginal tax rate</strong> on 50% of the capital gain</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="tagline-box">
+      <p>Tax smart, keep more of what you earn.</p>
+    </div>
+  </div>
+
+  <div class="contact-bar">
+    <div class="c-left">
+      <div class="name">Yogesh Mainrai</div>
+      <div class="role">Financial Security Advisor</div>
+    </div>
+    <div class="c-right">
+      <div class="info">📞 236 517 0003</div>
+      <div class="info">✉ yogeshmainrai.financials@gmail.com</div>
+      <div class="region">Serving in BC, Alberta &amp; Ontario</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

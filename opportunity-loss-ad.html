@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opportunity Loss - Cost of Delay</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Anton&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #111; font-family: 'Montserrat', sans-serif; }
+
+  .ad {
+    width: 720px;
+    background: #f0fbf9;
+  }
+
+  .hero {
+    background: #ffffff;
+    padding: 36px 34px 30px;
+    text-align: center;
+    border-bottom: 5px solid #0a9e8f;
+  }
+
+  .lbl-opportunity {
+    font-size: 80px;
+    font-weight: 900;
+    color: #1a1a1a;
+    letter-spacing: 1px;
+    line-height: 1.0;
+  }
+
+  .lbl-loss {
+    font-family: 'Anton', sans-serif;
+    font-size: 130px;
+    color: #cc1100;
+    letter-spacing: 6px;
+    line-height: 0.95;
+    margin-bottom: 22px;
+    text-shadow: 3px 3px 0 rgba(200,0,0,0.15);
+  }
+
+  .cost-banner {
+    display: inline-block;
+    background: #f5c800;
+    padding: 16px 42px;
+    border-radius: 6px;
+    font-size: 36px;
+    font-weight: 800;
+    color: #1a1a1a;
+  }
+  .cost-banner .red { color: #cc1100; }
+
+  .main { padding: 26px 28px 24px; }
+
+  .table-wrap {
+    border: 3px solid #0a9e8f;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  table.compare {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+  }
+
+  .invest-cell {
+    width: 220px;
+    padding: 22px 20px;
+    font-size: 21px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.55;
+    vertical-align: middle;
+    background: #fff;
+  }
+  .invest-cell .rate {
+    font-size: 17px;
+    font-weight: 600;
+    color: #555;
+    margin-top: 9px;
+  }
+
+  .person-cell {
+    text-align: center;
+    border-left: 3px solid #0a9e8f;
+    padding: 20px 14px 16px;
+    background: #fff;
+    vertical-align: middle;
+  }
+  .avatar {
+    font-size: 52px;
+    display: block;
+    margin-bottom: 9px;
+  }
+  .p-name {
+    font-size: 24px;
+    font-weight: 800;
+    color: #0a9e8f;
+  }
+
+  .sub-cell {
+    text-align: center;
+    border-left: 3px solid #0a9e8f;
+    border-top: 2px solid #c5eae4;
+    padding: 12px 8px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    background: #f8fefd;
+  }
+
+  .label-cell {
+    background: #0a9e8f;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 20px 20px;
+    border-top: 3px solid #0d8b7e;
+    vertical-align: middle;
+  }
+
+  .val-cell {
+    border-left: 3px solid #0a9e8f;
+    border-top: 2px solid #c5eae4;
+    text-align: center;
+    padding: 20px 14px;
+    font-size: 26px;
+    font-weight: 700;
+    color: #1a1a1a;
+    background: #fff;
+    vertical-align: middle;
+  }
+
+  .val-highlight {
+    display: inline-block;
+    background: #fff3b0;
+    border-radius: 6px;
+    padding: 6px 16px;
+    color: #cc1100;
+    font-size: 30px;
+    font-weight: 900;
+  }
+
+  .tagline-box {
+    margin-top: 20px;
+    background: #0a9e8f;
+    border-radius: 8px;
+    padding: 20px 26px;
+    text-align: center;
+  }
+  .tagline-box .main-tag {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    font-style: italic;
+  }
+  .tagline-box .sub-tag {
+    font-size: 18px;
+    color: rgba(255,255,255,0.95);
+    margin-top: 8px;
+    font-weight: 600;
+  }
+
+  .contact-bar {
+    background: #0a7c6f;
+    padding: 18px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 22px;
+  }
+  .c-left .name {
+    font-size: 24px;
+    font-weight: 800;
+    color: #fff;
+  }
+  .c-left .role {
+    font-size: 15px;
+    color: rgba(255,255,255,0.95);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 5px;
+    font-weight: 700;
+  }
+  .c-right { text-align: right; }
+  .c-right .info {
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+    word-break: break-all;
+    overflow-wrap: break-word;
+  }
+  .c-right .region {
+    font-size: 16px;
+    font-style: italic;
+    color: rgba(255,255,255,0.95);
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+<div class="ad">
+
+  <div class="hero">
+    <div class="lbl-opportunity">OPPORTUNITY</div>
+    <div class="lbl-loss">LOSS</div>
+    <div class="cost-banner">Cost of Delay : <span class="red">$2.01M</span></div>
+  </div>
+
+  <div class="main">
+    <div class="table-wrap">
+      <table class="compare">
+        <tr>
+          <td class="invest-cell" rowspan="2">
+            Investing monthly<br>
+            <strong>$1,500 / month</strong>
+            <div class="rate">(Assuming 8% Annual Return)</div>
+          </td>
+          <td class="person-cell">
+            <span class="avatar">👨</span>
+            <div class="p-name">Alex</div>
+          </td>
+          <td class="person-cell">
+            <span class="avatar">👨‍💼</span>
+            <div class="p-name">Jordan</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="sub-cell">Starts Early at</td>
+          <td class="sub-cell">Delays till</td>
+        </tr>
+        <tr>
+          <td class="label-cell">Current Age</td>
+          <td class="val-cell">25 years</td>
+          <td class="val-cell">35 years</td>
+        </tr>
+        <tr>
+          <td class="label-cell">Investment Till Age</td>
+          <td class="val-cell">60 years</td>
+          <td class="val-cell">60 years</td>
+        </tr>
+        <tr>
+          <td class="label-cell">Value of Investment</td>
+          <td class="val-cell"><span class="val-highlight">$3.44M</span></td>
+          <td class="val-cell">$1.43M</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="tagline-box">
+      <div class="main-tag">"The biggest investment regret? Not starting early."</div>
+      <div class="sub-tag">Act now and secure your financial future!</div>
+    </div>
+  </div>
+
+  <div class="contact-bar">
+    <div class="c-left">
+      <div class="name">Yogesh Mainrai</div>
+      <div class="role">Financial Security Advisor</div>
+    </div>
+    <div class="c-right">
+      <div class="info">📞 236 517 0003</div>
+      <div class="info">✉ yogeshmainrai.financials@gmail.com</div>
+      <div class="region">Serving in BC, Alberta &amp; Ontario</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

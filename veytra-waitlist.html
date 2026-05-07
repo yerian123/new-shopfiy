@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#EAE6DE">
+  <meta name="description" content="Veytra Nutrition — Natural botanical supplements designed for women in perimenopause. Join the early access list.">
+  <title>Veytra Nutrition — Join the Early Access List</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:   #EAE6DE;
+      --green:   #2D5016;
+      --green-h: #3a6820;
+      --gold:    #C9A84C;
+      --charcoal:#2D2D2D;
+      --white:   #FFFFFF;
+      --sage:    #4A7240;
+    }
+
+    html { background: var(--cream); }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 52px 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ── Botanical decorations ── */
+    .botanical {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      height: min(92vh, 720px);
+      width: 130px;
+      opacity: 0.3;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .botanical-left  { left: 0; }
+    .botanical-right { right: 0; transform: translateY(-50%) scaleX(-1); }
+
+    @media (max-width: 880px) { .botanical { display: none; } }
+
+    /* ── Container ── */
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 480px;
+    }
+
+    /* ── Brand header ── */
+    .brand-header { text-align: center; margin-bottom: 28px; }
+
+    .brand-label {
+      display: block;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .gold-line {
+      width: 52px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 0 auto;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      border-radius: 26px;
+      padding: 52px 44px;
+      box-shadow:
+        0 4px 32px rgba(45, 45, 45, 0.07),
+        0 1px 0 rgba(255,255,255,0.85) inset;
+    }
+
+    @media (max-width: 520px) {
+      .card { padding: 38px 26px; border-radius: 22px; }
+    }
+
+    /* ── Headline ── */
+    .headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 7.5vw, 42px);
+      font-weight: 700;
+      color: var(--green);
+      line-height: 1.22;
+      text-align: center;
+      margin-bottom: 18px;
+      letter-spacing: -0.01em;
+    }
+    .headline em { font-style: italic; font-weight: 600; }
+
+    /* ── Subheadline ── */
+    .subheadline {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--charcoal);
+      line-height: 1.75;
+      text-align: center;
+      margin-bottom: 30px;
+      opacity: 0.8;
+    }
+
+    /* ── Countdown ── */
+    .countdown-wrap { display: flex; justify-content: center; margin-bottom: 28px; }
+
+    .countdown-pill {
+      background: var(--green);
+      border-radius: 999px;
+      padding: 12px 22px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      box-shadow: 0 2px 18px rgba(45, 80, 22, 0.24);
+    }
+
+    .cd-label {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.52);
+      margin-right: 6px;
+      white-space: nowrap;
+    }
+
+    .cd-block { display: flex; align-items: baseline; gap: 3px; }
+
+    .cd-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 21px;
+      font-weight: 600;
+      color: var(--gold);
+      min-width: 28px;
+      text-align: center;
+      line-height: 1;
+    }
+
+    .cd-unit {
+      font-size: 8px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.42);
+    }
+
+    .cd-dot {
+      color: rgba(255,255,255,0.22);
+      font-size: 14px;
+      margin: 0 5px;
+      align-self: center;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      width: 38px;
+      height: 1px;
+      background: rgba(201, 168, 76, 0.28);
+      margin: 26px auto;
+    }
+
+    /* ── Benefits ── */
+    .benefits {
+      list-style: none;
+      margin-bottom: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .benefits li {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      font-size: 14px;
+      color: var(--charcoal);
+      line-height: 1.55;
+    }
+
+    .check {
+      color: var(--gold);
+      font-size: 13px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      font-weight: 600;
+    }
+
+    /* ── Form ── */
+    .field-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .field-wrap { position: relative; }
+
+    .field {
+      width: 100%;
+      padding: 16px 22px;
+      border: 1.5px solid rgba(45,45,45,0.1);
+      border-radius: 999px;
+      background: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: var(--charcoal);
+      outline: none;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .field::placeholder { color: rgba(45,45,45,0.36); }
+
+    .field:focus {
+      border-color: var(--gold);
+      box-shadow: 0 2px 16px rgba(201,168,76,0.18);
+    }
+
+    .field.has-error { border-color: #C0392B; box-shadow: 0 2px 10px rgba(192,57,43,0.1); }
+
+    .err-msg {
+      display: none;
+      font-size: 12px;
+      color: #C0392B;
+      padding: 6px 20px 0;
+      line-height: 1.4;
+    }
+    .err-msg.show { display: block; }
+
+    /* ── Submit button ── */
+    .submit {
+      width: 100%;
+      padding: 18px 24px;
+      background: var(--green);
+      color: var(--white);
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 500;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+      transition: background 0.22s ease, transform 0.18s ease, box-shadow 0.22s ease;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .submit:hover {
+      background: var(--green-h);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(45,80,22,0.3);
+    }
+
+    .submit:active  { transform: none; box-shadow: none; }
+
+    .submit:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .privacy {
+      text-align: center;
+      font-size: 12px;
+      color: rgba(45,45,45,0.4);
+      margin-top: 14px;
+      line-height: 1.5;
+    }
+
+    /* ── Success state ── */
+    #success { display: none; text-align: center; }
+
+    #success.show {
+      display: block;
+      animation: fadeUp 0.55s cubic-bezier(0.16,1,0.3,1) both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .success-circle {
+      width: 76px;
+      height: 76px;
+      background: var(--green);
+      border-radius: 50%;
+      margin: 0 auto 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 30px rgba(45,80,22,0.24);
+    }
+
+    .success-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+    }
+
+    .success-sub {
+      font-size: 15px;
+      color: var(--charcoal);
+      line-height: 1.72;
+      margin-bottom: 20px;
+      opacity: 0.88;
+    }
+
+    .code-badge {
+      display: inline-block;
+      background: var(--green);
+      color: var(--gold);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      padding: 11px 30px;
+      border-radius: 999px;
+      margin-bottom: 22px;
+    }
+
+    .success-note {
+      font-size: 13px;
+      color: rgba(45,45,45,0.5);
+      line-height: 1.65;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 12px;
+      color: rgba(45,45,45,0.37);
+      letter-spacing: 0.03em;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     BOTANICAL LEFT
+════════════════════════════════════════ -->
+<svg class="botanical botanical-left" viewBox="0 0 130 720" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <!-- Main stem -->
+  <path d="M65 720 C63 640 60 555 65 468 C70 382 66 295 62 200 C58 138 63 75 65 18" stroke="#4A7240" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+
+  <!-- Leaf cluster 1 (bottom) -->
+  <path d="M65 660 C42 638 16 624 6 598 C28 604 52 622 65 646" fill="#4A7240"/>
+  <path d="M65 660 C89 637 115 622 124 596 C102 603 78 620 65 644" fill="#4A7240" opacity="0.82"/>
+
+  <!-- Leaf cluster 2 -->
+  <path d="M64 578 C38 554 12 538 3 511 C26 518 52 536 64 562" fill="#4A7240" opacity="0.92"/>
+  <path d="M64 578 C90 553 116 537 124 510 C101 517 77 535 64 560" fill="#4A7240" opacity="0.76"/>
+
+  <!-- Leaf cluster 3 -->
+  <path d="M65 494 C40 470 15 453 6 426 C30 433 55 451 65 477" fill="#4A7240" opacity="0.86"/>
+  <path d="M65 494 C91 469 117 451 126 424 C102 432 78 450 65 475" fill="#4A7240" opacity="0.7"/>
+
+  <!-- Leaf cluster 4 -->
+  <path d="M64 408 C40 383 16 366 7 340 C30 347 54 366 64 391" fill="#4A7240" opacity="0.82"/>
+  <path d="M64 408 C89 382 115 364 123 338 C100 346 76 364 64 389" fill="#4A7240" opacity="0.66"/>
+
+  <!-- Leaf cluster 5 -->
+  <path d="M64 320 C40 295 16 278 7 252 C30 259 54 278 64 303" fill="#4A7240" opacity="0.76"/>
+  <path d="M64 320 C89 294 115 276 123 250 C100 258 76 276 64 301" fill="#4A7240" opacity="0.62"/>
+
+  <!-- Leaf cluster 6 -->
+  <path d="M63 232 C41 208 18 192 9 166 C32 173 55 191 63 215" fill="#4A7240" opacity="0.7"/>
+  <path d="M63 232 C87 207 112 188 120 162 C97 170 74 188 63 213" fill="#4A7240" opacity="0.56"/>
+
+  <!-- Leaf cluster 7 (top) -->
+  <path d="M64 142 C45 120 24 104 16 80 C38 87 59 104 64 128" fill="#4A7240" opacity="0.62"/>
+  <path d="M64 142 C85 119 106 101 114 76 C92 84 70 101 64 126" fill="#4A7240" opacity="0.5"/>
+
+  <!-- Berries left -->
+  <circle cx="5"  cy="596" r="3.5" fill="#4A7240" opacity="0.5"/>
+  <circle cx="2"  cy="509" r="3"   fill="#4A7240" opacity="0.46"/>
+  <circle cx="5"  cy="424" r="3.5" fill="#4A7240" opacity="0.5"/>
+  <circle cx="6"  cy="338" r="3"   fill="#4A7240" opacity="0.44"/>
+  <circle cx="6"  cy="250" r="3"   fill="#4A7240" opacity="0.42"/>
+  <circle cx="8"  cy="164" r="3"   fill="#4A7240" opacity="0.38"/>
+
+  <!-- Berries right -->
+  <circle cx="124" cy="594" r="3"   fill="#4A7240" opacity="0.42"/>
+  <circle cx="124" cy="508" r="3.5" fill="#4A7240" opacity="0.38"/>
+  <circle cx="125" cy="422" r="3"   fill="#4A7240" opacity="0.4"/>
+  <circle cx="123" cy="336" r="3"   fill="#4A7240" opacity="0.36"/>
+  <circle cx="123" cy="248" r="3"   fill="#4A7240" opacity="0.34"/>
+
+  <!-- Top bud -->
+  <ellipse cx="65" cy="15" rx="6" ry="11" fill="#4A7240" opacity="0.48"/>
+  <ellipse cx="57" cy="22" rx="4"  ry="7.5" fill="#4A7240" opacity="0.36" transform="rotate(-22 57 22)"/>
+  <ellipse cx="73" cy="22" rx="4"  ry="7.5" fill="#4A7240" opacity="0.3"  transform="rotate(22 73 22)"/>
+</svg>
+
+<!-- ════════════════════════════════════════
+     BOTANICAL RIGHT  (CSS-mirrored)
+════════════════════════════════════════ -->
+<svg class="botanical botanical-right" viewBox="0 0 130 720" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path d="M65 720 C63 640 60 555 65 468 C70 382 66 295 62 200 C58 138 63 75 65 18" stroke="#4A7240" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+  <path d="M65 660 C42 638 16 624 6 598 C28 604 52 622 65 646" fill="#4A7240"/>
+  <path d="M65 660 C89 637 115 622 124 596 C102 603 78 620 65 644" fill="#4A7240" opacity="0.82"/>
+  <path d="M64 578 C38 554 12 538 3 511 C26 518 52 536 64 562" fill="#4A7240" opacity="0.92"/>
+  <path d="M64 578 C90 553 116 537 124 510 C101 517 77 535 64 560" fill="#4A7240" opacity="0.76"/>
+  <path d="M65 494 C40 470 15 453 6 426 C30 433 55 451 65 477" fill="#4A7240" opacity="0.86"/>
+  <path d="M65 494 C91 469 117 451 126 424 C102 432 78 450 65 475" fill="#4A7240" opacity="0.7"/>
+  <path d="M64 408 C40 383 16 366 7 340 C30 347 54 366 64 391" fill="#4A7240" opacity="0.82"/>
+  <path d="M64 408 C89 382 115 364 123 338 C100 346 76 364 64 389" fill="#4A7240" opacity="0.66"/>
+  <path d="M64 320 C40 295 16 278 7 252 C30 259 54 278 64 303" fill="#4A7240" opacity="0.76"/>
+  <path d="M64 320 C89 294 115 276 123 250 C100 258 76 276 64 301" fill="#4A7240" opacity="0.62"/>
+  <path d="M63 232 C41 208 18 192 9 166 C32 173 55 191 63 215" fill="#4A7240" opacity="0.7"/>
+  <path d="M63 232 C87 207 112 188 120 162 C97 170 74 188 63 213" fill="#4A7240" opacity="0.56"/>
+  <path d="M64 142 C45 120 24 104 16 80 C38 87 59 104 64 128" fill="#4A7240" opacity="0.62"/>
+  <path d="M64 142 C85 119 106 101 114 76 C92 84 70 101 64 126" fill="#4A7240" opacity="0.5"/>
+  <circle cx="5"  cy="596" r="3.5" fill="#4A7240" opacity="0.5"/>
+  <circle cx="2"  cy="509" r="3"   fill="#4A7240" opacity="0.46"/>
+  <circle cx="5"  cy="424" r="3.5" fill="#4A7240" opacity="0.5"/>
+  <circle cx="6"  cy="338" r="3"   fill="#4A7240" opacity="0.44"/>
+  <circle cx="6"  cy="250" r="3"   fill="#4A7240" opacity="0.42"/>
+  <circle cx="8"  cy="164" r="3"   fill="#4A7240" opacity="0.38"/>
+  <circle cx="124" cy="594" r="3"   fill="#4A7240" opacity="0.42"/>
+  <circle cx="124" cy="508" r="3.5" fill="#4A7240" opacity="0.38"/>
+  <circle cx="125" cy="422" r="3"   fill="#4A7240" opacity="0.4"/>
+  <circle cx="123" cy="336" r="3"   fill="#4A7240" opacity="0.36"/>
+  <circle cx="123" cy="248" r="3"   fill="#4A7240" opacity="0.34"/>
+  <ellipse cx="65" cy="15" rx="6" ry="11" fill="#4A7240" opacity="0.48"/>
+  <ellipse cx="57" cy="22" rx="4"  ry="7.5" fill="#4A7240" opacity="0.36" transform="rotate(-22 57 22)"/>
+  <ellipse cx="73" cy="22" rx="4"  ry="7.5" fill="#4A7240" opacity="0.3"  transform="rotate(22 73 22)"/>
+</svg>
+
+
+<!-- ════════════════════════════════════════
+     MAIN CONTENT
+════════════════════════════════════════ -->
+<div class="container">
+
+  <!-- Brand header -->
+  <div class="brand-header">
+    <span class="brand-label">Coming Soon — Veytra Nutrition</span>
+    <div class="gold-line"></div>
+  </div>
+
+  <!-- Card -->
+  <div class="card">
+
+    <!-- Headline -->
+    <h1 class="headline">You haven't changed.<br><em>Your hormones have.</em></h1>
+
+    <!-- Subheadline -->
+    <p class="subheadline">Natural botanical supplements designed specifically for women in perimenopause. Be the first to know when we launch.</p>
+
+    <!-- Countdown -->
+    <div class="countdown-wrap">
+      <div class="countdown-pill">
+        <span class="cd-label">Launching in</span>
+        <div class="cd-block">
+          <span class="cd-num" id="cd-days">30</span>
+          <span class="cd-unit">days</span>
+        </div>
+        <span class="cd-dot">·</span>
+        <div class="cd-block">
+          <span class="cd-num" id="cd-hrs">00</span>
+          <span class="cd-unit">hrs</span>
+        </div>
+        <span class="cd-dot">·</span>
+        <div class="cd-block">
+          <span class="cd-num" id="cd-min">00</span>
+          <span class="cd-unit">min</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Benefits -->
+    <ul class="benefits">
+      <li><span class="check">✓</span><span>First access before public launch</span></li>
+      <li><span class="check">✓</span><span>Founding member pricing — 20% off forever</span></li>
+      <li><span class="check">✓</span><span>Free Perimenopause Starter Guide</span></li>
+      <li><span class="check">✓</span><span>Cancel anytime — no pressure</span></li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <!-- Form area -->
+    <div id="form-area">
+      <form id="form" novalidate>
+        <div class="field-stack">
+
+          <div class="field-wrap">
+            <input
+              type="text"
+              id="fname"
+              name="first_name"
+              class="field"
+              placeholder="First name"
+              autocomplete="given-name"
+              autocorrect="off"
+            >
+          </div>
+
+          <div class="field-wrap">
+            <input
+              type="email"
+              id="email"
+              name="email_address"
+              class="field"
+              placeholder="Email address"
+              autocomplete="email"
+              inputmode="email"
+            >
+            <p class="err-msg" id="email-err">Please enter a valid email address</p>
+          </div>
+
+        </div>
+        <button type="submit" class="submit" id="submit-btn">Join the Early Access List →</button>
+      </form>
+      <p class="privacy">No spam. No pressure. Unsubscribe anytime.</p>
+    </div>
+
+    <!-- Success state -->
+    <div id="success">
+      <div class="success-circle">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <path d="M9 21L17 29L31 13" stroke="#C9A84C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h2 class="success-heading">You're in.</h2>
+      <p class="success-sub">Check your email for your founding<br>member code</p>
+      <div class="code-badge">FOUNDING20</div>
+      <p class="success-sub">20% off every order, forever.</p>
+      <p class="success-note">Welcome to Veytra. We'll be in touch<br>when we launch.</p>
+    </div>
+
+  </div><!-- /card -->
+
+  <footer class="footer">© 2025 Veytra Nutrition · veytranutrition.com</footer>
+
+</div><!-- /container -->
+
+
+<!-- Kit embed (background, hidden) -->
+<div style="display:none" aria-hidden="true">
+  <script async data-uid="58dde32f70" src="https://veytra.kit.com/58dde32f70/index.js"></script>
+</div>
+
+<script>
+/* ════════════════════════
+   COUNTDOWN TIMER
+════════════════════════ */
+(function () {
+  var launch = new Date('2026-06-06T00:00:00');
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function tick() {
+    var ms = Math.max(0, launch - new Date());
+    document.getElementById('cd-days').textContent = pad(Math.floor(ms / 864e5));
+    document.getElementById('cd-hrs').textContent  = pad(Math.floor(ms % 864e5 / 36e5));
+    document.getElementById('cd-min').textContent  = pad(Math.floor(ms % 36e5  / 6e4));
+  }
+
+  tick();
+  setInterval(tick, 1000);
+}());
+
+/* ════════════════════════
+   FORM HANDLING
+════════════════════════ */
+(function () {
+  var form     = document.getElementById('form');
+  var fname    = document.getElementById('fname');
+  var email    = document.getElementById('email');
+  var emailErr = document.getElementById('email-err');
+  var btn      = document.getElementById('submit-btn');
+  var formArea = document.getElementById('form-area');
+  var success  = document.getElementById('success');
+
+  function isValidEmail(v) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  }
+
+  function setEmailErr(show) {
+    email.classList.toggle('has-error', show);
+    emailErr.classList.toggle('show', show);
+  }
+
+  email.addEventListener('input', function () {
+    if (email.value) setEmailErr(false);
+  });
+
+  function revealSuccess() {
+    formArea.style.transition = 'opacity 0.35s ease';
+    formArea.style.opacity = '0';
+    setTimeout(function () {
+      formArea.style.display = 'none';
+      success.classList.add('show');
+    }, 360);
+  }
+
+  /* Already signed up? Show success immediately. */
+  if (localStorage.getItem('veytra_submitted') === '1') {
+    formArea.style.display = 'none';
+    success.style.animation = 'none';
+    success.classList.add('show');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var fn = fname.value.trim();
+    var em = email.value.trim();
+
+    /* Validate first name */
+    if (!fn) {
+      fname.classList.add('has-error');
+      fname.focus();
+      fname.addEventListener('input', function fix() {
+        fname.classList.remove('has-error');
+        fname.removeEventListener('input', fix);
+      });
+      return;
+    }
+
+    /* Validate email */
+    if (!em || !isValidEmail(em)) {
+      setEmailErr(true);
+      email.focus();
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Joining…';
+
+    /* Persist locally */
+    localStorage.setItem('veytra_first_name', fn);
+    localStorage.setItem('veytra_email', em);
+    localStorage.setItem('veytra_submitted', '1');
+
+    /* Submit to Kit */
+    var fd = new FormData();
+    fd.append('first_name', fn);
+    fd.append('email_address', em);
+
+    fetch('https://app.convertkit.com/forms/58dde32f70/subscriptions', {
+      method: 'POST',
+      body: fd,
+      mode: 'no-cors'
+    }).catch(function (err) {
+      console.warn('Kit submit error:', err);
+    }).finally(function () {
+      revealSuccess();
+    });
+  });
+}());
+</script>
+</body>
+</html>

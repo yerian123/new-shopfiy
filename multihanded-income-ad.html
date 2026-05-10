@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Importance of Multihanded Income</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #111; font-family: 'Montserrat', sans-serif; }
+
+  .ad {
+    width: 500px;
+    background: #060c14;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Background layers */
+  .bg-grid {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 80% 20%, rgba(0,80,160,0.25) 0%, transparent 60%),
+      radial-gradient(ellipse at 10% 70%, rgba(0,150,120,0.15) 0%, transparent 50%),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0px, rgba(255,255,255,0.018) 1px, transparent 1px, transparent 44px),
+      repeating-linear-gradient(0deg,  rgba(255,255,255,0.018) 0px, rgba(255,255,255,0.018) 1px, transparent 1px, transparent 44px);
+    z-index: 0;
+  }
+
+  /* Decorative chart bars bottom-left */
+  .chart-bars {
+    position: absolute;
+    bottom: 140px; left: 0;
+    width: 200px; height: 280px;
+    z-index: 1;
+    opacity: 0.12;
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    padding-left: 10px;
+  }
+  .bar { background: #00d4a0; border-radius: 2px 2px 0 0; width: 10px; }
+
+  /* Accent line left */
+  .accent-left {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 6px;
+    background: repeating-linear-gradient(180deg, #f5c800 0px, #f5c800 18px, #060c14 18px, #060c14 36px);
+    z-index: 2;
+  }
+
+  /* Top gold bar */
+  .top-bar {
+    position: absolute;
+    top: 0; left: 6px; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #f5c800, #e8a800);
+    z-index: 2;
+  }
+
+  .content {
+    position: relative;
+    z-index: 10;
+    padding: 34px 30px 0 34px;
+  }
+
+  /* ── TITLE ── */
+  .title {
+    font-size: 48px;
+    font-weight: 900;
+    color: #ffffff;
+    text-align: center;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    text-shadow: 0 3px 12px rgba(0,0,0,0.7);
+  }
+  .title .gold { color: #f5c800; }
+
+  /* ── SUBTITLE ── */
+  .subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-style: italic;
+    font-weight: 700;
+    color: rgba(255,255,255,0.92);
+    text-align: center;
+    line-height: 1.6;
+    margin-bottom: 28px;
+    padding: 14px 16px;
+    border-top: 1px solid rgba(245,200,0,0.3);
+    border-bottom: 1px solid rgba(245,200,0,0.3);
+  }
+
+  /* ── BULLET SECTION ── */
+  .bullet-section {
+    background: rgba(0,0,0,0.5);
+    border-left: 5px solid #f5c800;
+    border-radius: 0 10px 10px 0;
+    padding: 22px 24px;
+    margin-bottom: 30px;
+  }
+
+  .bullet-label {
+    font-size: 20px;
+    font-weight: 800;
+    color: #f5c800;
+    margin-bottom: 16px;
+    letter-spacing: 0.3px;
+  }
+
+  .bullet-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .bullet-dot {
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    background: #f5c800;
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+  .bullet-text {
+    font-size: 21px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.45;
+  }
+
+  /* ── CONTACT LABEL PILL ── */
+  .pill-wrap {
+    text-align: center;
+    margin-bottom: 0;
+    padding-bottom: 20px;
+  }
+  .contact-pill {
+    display: inline-block;
+    background: linear-gradient(90deg, #b86820, #d9832a);
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ── CONTACT BOX ── */
+  .contact-box {
+    background: #ffffff;
+    padding: 22px 30px 26px;
+  }
+  .contact-name {
+    font-size: 23px;
+    font-weight: 800;
+    color: #1a1a1a;
+    text-decoration: underline;
+    margin-bottom: 4px;
+  }
+  .contact-role {
+    font-size: 19px;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-decoration: underline;
+    margin-bottom: 10px;
+  }
+  .contact-info {
+    font-size: 19px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 6px;
+    text-decoration: underline;
+    word-break: break-all;
+    overflow-wrap: break-word;
+  }
+  .contact-region {
+    font-size: 17px;
+    font-weight: 600;
+    color: #444;
+    margin-top: 8px;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+<div class="ad">
+  <div class="bg-grid"></div>
+
+  <!-- Decorative chart bars -->
+  <div class="chart-bars">
+    <div class="bar" style="height:60px"></div>
+    <div class="bar" style="height:100px"></div>
+    <div class="bar" style="height:75px"></div>
+    <div class="bar" style="height:130px"></div>
+    <div class="bar" style="height:90px"></div>
+    <div class="bar" style="height:160px"></div>
+    <div class="bar" style="height:110px"></div>
+    <div class="bar" style="height:200px"></div>
+    <div class="bar" style="height:140px"></div>
+    <div class="bar" style="height:240px"></div>
+    <div class="bar" style="height:180px"></div>
+    <div class="bar" style="height:260px"></div>
+  </div>
+
+  <div class="accent-left"></div>
+  <div class="top-bar"></div>
+
+  <div class="content">
+    <div class="title">
+      Importance of<br>
+      <span class="gold">Multihanded</span> Income
+    </div>
+
+    <div class="subtitle">
+      "To achieve real financial freedom, focus on building a multihanded income."
+    </div>
+
+    <div class="bullet-section">
+      <div class="bullet-label">Multi Handed Income —</div>
+      <div class="bullet-item">
+        <div class="bullet-dot"></div>
+        <div class="bullet-text">Protects you if one income stops</div>
+      </div>
+      <div class="bullet-item">
+        <div class="bullet-dot"></div>
+        <div class="bullet-text">Speeds up savings and investments</div>
+      </div>
+      <div class="bullet-item">
+        <div class="bullet-dot"></div>
+        <div class="bullet-text">More money, more choices</div>
+      </div>
+      <div class="bullet-item">
+        <div class="bullet-dot"></div>
+        <div class="bullet-text">Keeps up with rising costs</div>
+      </div>
+      <div class="bullet-item">
+        <div class="bullet-dot"></div>
+        <div class="bullet-text">Builds wealth for your family's future</div>
+      </div>
+    </div>
+
+    <div class="pill-wrap">
+      <div class="contact-pill">FOR FURTHER INFORMATION CONTACT:</div>
+    </div>
+  </div>
+
+  <div class="contact-box">
+    <div class="contact-name">Yogesh Mainrai</div>
+    <div class="contact-role">Financial Security Advisor</div>
+    <div class="contact-info">📞 236 517 0003</div>
+    <div class="contact-info">✉ yogeshmainrai.financials@gmail.com</div>
+    <div class="contact-region">Serving in BC, Alberta &amp; Ontario</div>
+  </div>
+</div>
+</body>
+</html>

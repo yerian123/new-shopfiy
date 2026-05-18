@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Small Investment Big Impact</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #0a0a0a; font-family: 'Montserrat', sans-serif; }
+
+  .ad {
+    width: 960px;
+    background: #1a1a1a;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ── TOP SECTION ── */
+  .top {
+    display: flex;
+    align-items: stretch;
+    padding: 44px 44px 30px 44px;
+    gap: 30px;
+  }
+
+  .title-block {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .headline {
+    font-size: 68px;
+    font-weight: 900;
+    color: #e8d5a3;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+  }
+
+  /* ── PHOTO PLACEHOLDER ── */
+  .photo-slot {
+    width: 280px;
+    min-height: 300px;
+    flex-shrink: 0;
+    border: 3px dashed rgba(232,213,163,0.35);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.04);
+  }
+  .photo-slot .icon {
+    font-size: 60px;
+    opacity: 0.4;
+  }
+  .photo-slot .slot-label {
+    font-size: 15px;
+    font-weight: 700;
+    color: rgba(232,213,163,0.45);
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+
+  /* ── STATS SECTION ── */
+  .stats-section {
+    padding: 0 44px 36px 44px;
+  }
+
+  .rate-line {
+    font-size: 28px;
+    font-weight: 800;
+    color: #e8d5a3;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .rate-line::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: rgba(232,213,163,0.2);
+    border-radius: 2px;
+  }
+
+  .cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .col {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(232,213,163,0.15);
+    border-radius: 8px;
+    padding: 22px 24px;
+  }
+
+  .col-year {
+    font-size: 32px;
+    font-weight: 900;
+    color: #e8d5a3;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+
+  .col-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .col-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #e8d5a3;
+    flex-shrink: 0;
+    margin-top: 9px;
+  }
+  .col-text {
+    font-size: 22px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.4;
+  }
+  .col-text .growth {
+    color: #6ee8a0;
+    font-weight: 800;
+  }
+
+  /* ── BOTTOM BAR ── */
+  .bottom-bar {
+    background: #0d0d0d;
+    border-top: 2px solid rgba(232,213,163,0.2);
+    padding: 18px 44px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .b-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .b-icon {
+    font-size: 22px;
+    color: #e8d5a3;
+  }
+  .b-text {
+    font-size: 21px;
+    font-weight: 800;
+    color: #ffffff;
+    word-break: break-all;
+    overflow-wrap: break-word;
+  }
+  .b-region {
+    font-size: 17px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.7);
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+<div class="ad">
+
+  <!-- TOP: Title + Photo Slot -->
+  <div class="top">
+    <div class="title-block">
+      <div class="headline">Small Investment<br>Today Create Big<br>Impact Tomorrow</div>
+    </div>
+    <div class="photo-slot">
+      <div class="icon">👤</div>
+      <div class="slot-label">Your Photo<br>Here</div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-section">
+    <div class="rate-line">$200/month at 8% (compounded annually)</div>
+
+    <div class="cols">
+      <div class="col">
+        <div class="col-year">10 Year</div>
+        <div class="col-item">
+          <div class="col-dot"></div>
+          <div class="col-text">Invested: $24,000</div>
+        </div>
+        <div class="col-item">
+          <div class="col-dot"></div>
+          <div class="col-text">Future Value: $34,768</div>
+        </div>
+        <div class="col-item">
+          <div class="col-dot"></div>
+          <div class="col-text">Growth: <span class="growth">+$10,768 (+45%)</span></div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="col-year">20 Year</div>
+        <div class="col-item">
+          <div class="col-dot"></div>
+          <div class="col-text">Invested: $48,000</div>
+        </div>
+        <div class="col-item">
+          <div class="col-dot"></div>
+          <div class="col-text">Future Value: $109,829</div>
+        </div>
+        <div class="col-item">
+          <div class="col-dot"></div>
+          <div class="col-text">Growth: <span class="growth">+$61,829 (+129%)</span></div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="col-year">30 Year</div>
+        <div class="col-item">
+          <div class="col-dot"></div>
+          <div class="col-text">Invested: $72,000</div>
+        </div>
+        <div class="col-item">
+          <div class="col-dot"></div>
+          <div class="col-text">Future Value: $271,880</div>
+        </div>
+        <div class="col-item">
+          <div class="col-dot"></div>
+          <div class="col-text">Growth: <span class="growth">+$199,880 (+278%)</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM BAR -->
+  <div class="bottom-bar">
+    <div class="b-item">
+      <span class="b-icon">👤</span>
+      <div>
+        <div class="b-text">Yogesh Mainrai</div>
+        <div class="b-region">Financial Security Advisor</div>
+      </div>
+    </div>
+    <div class="b-item">
+      <span class="b-icon">✉</span>
+      <div class="b-text">yogeshmainrai.financials@gmail.com</div>
+    </div>
+    <div class="b-item">
+      <span class="b-icon">📞</span>
+      <div class="b-text">236 517 0003</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

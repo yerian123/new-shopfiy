@@ -3,235 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mathblowing Learning Center - Summer Enrolments</title>
+<title>Mathblowing Learning Center</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #e0e0e0; font-family: 'Montserrat', sans-serif; }
+  body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #ccc; font-family: 'Montserrat', sans-serif; }
 
-  .ad { width: 680px; background: #ffffff; overflow: hidden; }
+  .ad { width: 390px; background: #fff; overflow: hidden; }
 
-  /* ── HEADER ── */
-  .header { background: #1e3a6e; padding: 30px 36px 24px; text-align: center; }
+  /* HEADER */
+  .header { background: #1e3a6e; padding: 18px 20px 14px; text-align: center; }
+  .biz-name { font-size: 22px; font-weight: 900; color: #fff; text-transform: uppercase; line-height: 1.1; margin-bottom: 2px; }
+  .biz-sub { font-size: 12px; font-weight: 700; color: #f5c800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+  .tutor-name { font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 3px; }
+  .tutor-quals { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.8); line-height: 1.5; }
 
-  .biz-name {
-    font-size: 42px;
-    font-weight: 900;
-    color: #ffffff;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    line-height: 1.1;
-    margin-bottom: 4px;
-  }
+  /* HERO */
+  .hero { background: linear-gradient(135deg, #1e3a6e 0%, #2a5298 100%); padding: 20px 20px 16px; text-align: center; border-bottom: 5px solid #f5c800; }
+  .hero-sub { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.8); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 4px; }
+  .hero-main { font-size: 42px; font-weight: 900; color: #fff; line-height: 1.0; text-transform: uppercase; margin-bottom: 2px; }
+  .hero-open { font-size: 42px; font-weight: 900; color: #f5c800; line-height: 1.0; text-transform: uppercase; margin-bottom: 10px; }
+  .hero-desc { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.9); }
 
-  .biz-sub {
-    font-size: 20px;
-    font-weight: 700;
-    color: #f5c800;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-
-  .tutor-name {
-    font-size: 24px;
-    font-weight: 800;
-    color: #fff;
-    margin-bottom: 6px;
-  }
-
-  .tutor-quals {
-    font-size: 18px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.85);
-    line-height: 1.5;
-  }
-
-  /* ── HERO BANNER ── */
-  .hero {
-    background: linear-gradient(135deg, #1e3a6e 0%, #2a5298 100%);
-    padding: 34px 36px 28px;
-    text-align: center;
-    border-bottom: 6px solid #f5c800;
-  }
-
-  .hero-sub {
-    font-size: 22px;
-    font-weight: 700;
-    color: rgba(255,255,255,0.85);
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-
-  .hero-main {
-    font-size: 72px;
-    font-weight: 900;
-    color: #ffffff;
-    line-height: 1.0;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-    margin-bottom: 6px;
-  }
-
-  .hero-open {
-    font-size: 72px;
-    font-weight: 900;
-    color: #f5c800;
-    line-height: 1.0;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-    margin-bottom: 18px;
-  }
-
-  .hero-desc {
-    font-size: 22px;
-    font-weight: 700;
-    color: rgba(255,255,255,0.9);
-  }
-
-  /* ── PROGRAMS ── */
-  .programs { padding: 30px 36px; background: #f7f9fc; border-bottom: 3px solid #e8eef6; }
-
-  .section-title {
-    font-size: 26px;
-    font-weight: 900;
-    color: #1e3a6e;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .section-title::after { content: ''; flex: 1; height: 3px; background: #f5c800; border-radius: 2px; }
-
-  .prog-grid { display: flex; flex-direction: column; gap: 14px; }
-
-  .prog-card {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    background: #ffffff;
-    border: 2px solid #1e3a6e;
-    border-radius: 10px;
-    padding: 22px 24px;
-  }
-
-  .prog-num {
-    width: 54px; height: 54px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 26px; font-weight: 900; color: #fff; flex-shrink: 0;
-  }
+  /* PROGRAMS */
+  .programs { padding: 16px 18px; background: #f7f9fc; border-bottom: 2px solid #e8eef6; }
+  .section-title { font-size: 14px; font-weight: 900; color: #1e3a6e; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .section-title::after { content: ''; flex: 1; height: 2px; background: #f5c800; border-radius: 2px; }
+  .prog-grid { display: flex; flex-direction: column; gap: 8px; }
+  .prog-card { display: flex; align-items: center; gap: 12px; background: #fff; border: 2px solid #1e3a6e; border-radius: 8px; padding: 12px 14px; }
+  .prog-num { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 900; color: #fff; flex-shrink: 0; }
   .num-blue   { background: #1e3a6e; }
   .num-teal   { background: #1a8a7a; }
   .num-purple { background: #6b3fa0; }
+  .prog-name { font-size: 16px; font-weight: 800; color: #1e3a6e; }
 
-  .prog-name {
-    font-size: 28px;
-    font-weight: 800;
-    color: #1e3a6e;
-    line-height: 1.2;
-  }
+  /* DETAILS */
+  .details { padding: 16px 18px; background: #fff; border-bottom: 2px solid #e8eef6; }
+  .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .detail-item { display: flex; align-items: center; gap: 8px; background: #f0f5ff; border-left: 4px solid #1e3a6e; border-radius: 0 6px 6px 0; padding: 10px 10px; }
+  .d-icon { font-size: 18px; flex-shrink: 0; }
+  .d-text { font-size: 12px; font-weight: 700; color: #1e3a6e; line-height: 1.3; }
 
-  /* ── SUMMER DETAILS ── */
-  .details { padding: 28px 36px; background: #fff; border-bottom: 3px solid #e8eef6; }
-
-  .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-
-  .detail-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    background: #f0f5ff;
-    border-left: 5px solid #1e3a6e;
-    border-radius: 0 8px 8px 0;
-    padding: 16px 16px;
-  }
-
-  .d-icon { font-size: 30px; flex-shrink: 0; }
-
-  .d-text {
-    font-size: 19px;
-    font-weight: 700;
-    color: #1e3a6e;
-    line-height: 1.35;
-  }
-
-  /* ── CONTACT ── */
-  .contact { background: #1e3a6e; padding: 28px 36px; }
-
-  .contact-title {
-    font-size: 30px;
-    font-weight: 900;
-    color: #f5c800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-
-  .contact-row {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 14px;
-    background: rgba(255,255,255,0.08);
-    border-radius: 8px;
-    padding: 16px 18px;
-  }
+  /* CONTACT */
+  .contact { background: #1e3a6e; padding: 16px 18px; }
+  .contact-title { font-size: 18px; font-weight: 900; color: #f5c800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; text-align: center; }
+  .contact-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; background: rgba(255,255,255,0.08); border-radius: 6px; padding: 10px 12px; }
   .contact-row:last-child { margin-bottom: 0; }
+  .c-icon { font-size: 18px; flex-shrink: 0; }
+  .c-label { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 1px; min-width: 60px; }
+  .c-value { font-size: 15px; font-weight: 800; color: #fff; white-space: nowrap; }
+  .c-value-wrap { font-size: 13px; font-weight: 800; color: #fff; word-break: break-all; overflow-wrap: break-word; }
 
-  .c-icon { font-size: 28px; flex-shrink: 0; }
-
-  .c-label {
-    font-size: 17px;
-    font-weight: 700;
-    color: rgba(255,255,255,0.6);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    min-width: 90px;
-  }
-
-  .c-value {
-    font-size: 23px;
-    font-weight: 800;
-    color: #ffffff;
-    white-space: nowrap;
-  }
-
-  .c-value-wrap {
-    font-size: 21px;
-    font-weight: 800;
-    color: #ffffff;
-    word-break: break-all;
-    overflow-wrap: break-word;
-  }
-
-  /* ── FOOTER ── */
-  .footer { background: #f5c800; padding: 18px 36px; text-align: center; }
-  .footer-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 26px;
-    font-style: italic;
-    font-weight: 700;
-    color: #1e3a6e;
-  }
+  /* FOOTER */
+  .footer { background: #f5c800; padding: 12px 18px; text-align: center; }
+  .footer-text { font-family: 'Playfair Display', serif; font-size: 16px; font-style: italic; font-weight: 700; color: #1e3a6e; }
 </style>
 </head>
 <body>
 <div class="ad">
 
-  <!-- HEADER -->
   <div class="header">
     <div class="biz-name">Mathblowing Learning Center</div>
     <div class="biz-sub">Where Results Matter</div>
     <div class="tutor-name">Expert Math Tutoring by Nishu Mainrai</div>
-    <div class="tutor-quals">M.Sc Mathematics &nbsp;·&nbsp; M.Ed &nbsp;·&nbsp; 10+ Years Teaching Experience</div>
+    <div class="tutor-quals">M.Sc Mathematics · M.Ed · 10+ Years Teaching Experience</div>
   </div>
 
-  <!-- HERO -->
   <div class="hero">
     <div class="hero-sub">Summer 2026</div>
     <div class="hero-main">SUMMER<br>ENROLMENTS</div>
@@ -239,7 +76,6 @@
     <div class="hero-desc">Expert Math Tutoring · Grades 10, 11 &amp; 12</div>
   </div>
 
-  <!-- PROGRAMS -->
   <div class="programs">
     <div class="section-title">Summer Batches</div>
     <div class="prog-grid">
@@ -258,30 +94,16 @@
     </div>
   </div>
 
-  <!-- SUMMER DETAILS -->
   <div class="details">
-    <div class="section-title">Summer Session Details</div>
+    <div class="section-title">Session Details</div>
     <div class="detail-grid">
-      <div class="detail-item">
-        <div class="d-icon">📅</div>
-        <div class="d-text">Flexible Summer Schedule</div>
-      </div>
-      <div class="detail-item">
-        <div class="d-icon">🏫</div>
-        <div class="d-text">In-Person Only</div>
-      </div>
-      <div class="detail-item">
-        <div class="d-icon">👥</div>
-        <div class="d-text">Small Group &amp; 1-on-1 Tutoring</div>
-      </div>
-      <div class="detail-item">
-        <div class="d-icon">⚡</div>
-        <div class="d-text">Limited Seats Available</div>
-      </div>
+      <div class="detail-item"><div class="d-icon">📅</div><div class="d-text">Flexible Summer Schedule</div></div>
+      <div class="detail-item"><div class="d-icon">🏫</div><div class="d-text">In-Person Only</div></div>
+      <div class="detail-item"><div class="d-icon">👥</div><div class="d-text">Small Group &amp; 1-on-1</div></div>
+      <div class="detail-item"><div class="d-icon">⚡</div><div class="d-text">Limited Seats Available</div></div>
     </div>
   </div>
 
-  <!-- CONTACT -->
   <div class="contact">
     <div class="contact-title">Register Today!</div>
     <div class="contact-row">
@@ -301,7 +123,6 @@
     </div>
   </div>
 
-  <!-- FOOTER -->
   <div class="footer">
     <div class="footer-text">Let's make this your best year yet!</div>
   </div>

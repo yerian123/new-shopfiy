@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Summer Enrolments</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #e0e0e0; font-family: 'Montserrat', sans-serif; }
+
+  .ad {
+    width: 680px;
+    background: #ffffff;
+    overflow: hidden;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: #1e3a6e;
+    padding: 32px 36px 28px;
+    text-align: center;
+    position: relative;
+  }
+
+  .biz-name {
+    font-size: 38px;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .biz-tagline {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: #f5c800;
+    margin-bottom: 0;
+  }
+
+  /* ── HERO BANNER ── */
+  .hero {
+    background: linear-gradient(135deg, #1e3a6e 0%, #2a5298 100%);
+    padding: 36px 36px 30px;
+    text-align: center;
+    border-bottom: 6px solid #f5c800;
+  }
+
+  .hero-sub {
+    font-size: 22px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .hero-main {
+    font-size: 72px;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.0;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin-bottom: 6px;
+  }
+
+  .hero-open {
+    font-size: 72px;
+    font-weight: 900;
+    color: #f5c800;
+    line-height: 1.0;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin-bottom: 18px;
+  }
+
+  .hero-desc {
+    font-size: 22px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+  }
+
+  /* ── PROGRAMS ── */
+  .programs {
+    padding: 30px 36px;
+    background: #f7f9fc;
+    border-bottom: 3px solid #e8eef6;
+  }
+
+  .section-title {
+    font-size: 26px;
+    font-weight: 900;
+    color: #1e3a6e;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 3px;
+    background: #f5c800;
+    border-radius: 2px;
+  }
+
+  .prog-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .prog-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: #ffffff;
+    border: 2px solid #1e3a6e;
+    border-radius: 10px;
+    padding: 18px 22px;
+  }
+
+  .prog-num {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    font-weight: 900;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .num-blue   { background: #1e3a6e; }
+  .num-teal   { background: #1a8a7a; }
+  .num-purple { background: #6b3fa0; }
+
+  .prog-name {
+    font-size: 26px;
+    font-weight: 800;
+    color: #1e3a6e;
+    line-height: 1.2;
+  }
+  .prog-name .sub {
+    font-size: 17px;
+    font-weight: 600;
+    color: #555;
+    margin-top: 2px;
+  }
+
+  /* ── SUMMER DETAILS ── */
+  .details {
+    padding: 28px 36px;
+    background: #fff;
+    border-bottom: 3px solid #e8eef6;
+  }
+
+  .detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .detail-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #f0f5ff;
+    border-left: 5px solid #1e3a6e;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 16px;
+  }
+
+  .d-icon { font-size: 28px; flex-shrink: 0; }
+
+  .d-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e3a6e;
+    line-height: 1.35;
+  }
+
+  /* ── WHO CAN JOIN ── */
+  .who {
+    padding: 28px 36px;
+    background: #f7f9fc;
+    border-bottom: 3px solid #e8eef6;
+  }
+
+  .who-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .who-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .check-circle {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: #1e3a6e;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .who-text {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: #1e3a6e;
+    padding: 28px 36px;
+  }
+
+  .contact-title {
+    font-size: 28px;
+    font-weight: 900;
+    color: #f5c800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 14px 18px;
+  }
+  .contact-row:last-child { margin-bottom: 0; }
+
+  .c-icon { font-size: 26px; flex-shrink: 0; }
+
+  .c-label {
+    font-size: 16px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    min-width: 90px;
+  }
+
+  .c-value {
+    font-size: 22px;
+    font-weight: 800;
+    color: #ffffff;
+    word-break: break-all;
+    overflow-wrap: break-word;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: #f5c800;
+    padding: 16px 36px;
+    text-align: center;
+  }
+  .footer-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 700;
+    color: #1e3a6e;
+  }
+</style>
+</head>
+<body>
+<div class="ad">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="biz-name">Your Tutoring Centre</div>
+    <div class="biz-tagline">Where Results Matter</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-sub">Summer 2025</div>
+    <div class="hero-main">SUMMER<br>ENROLMENTS</div>
+    <div class="hero-open">NOW OPEN!</div>
+    <div class="hero-desc">Expert Math Tutoring · Grades 11 &amp; 12</div>
+  </div>
+
+  <!-- PROGRAMS -->
+  <div class="programs">
+    <div class="section-title">Programs Offered</div>
+    <div class="prog-grid">
+      <div class="prog-card">
+        <div class="prog-num num-blue">1</div>
+        <div class="prog-name">
+          Grade 11 Pre-Calculus
+          <div class="sub">Functions · Quadratics · Trigonometry</div>
+        </div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-num num-teal">2</div>
+        <div class="prog-name">
+          Grade 12 Pre-Calculus
+          <div class="sub">Polynomials · Trig Identities · Transformations</div>
+        </div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-num num-purple">3</div>
+        <div class="prog-name">
+          Calculus
+          <div class="sub">Limits · Derivatives · Integrals</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUMMER DETAILS -->
+  <div class="details">
+    <div class="section-title">Summer Session Details</div>
+    <div class="detail-grid">
+      <div class="detail-item">
+        <div class="d-icon">📅</div>
+        <div class="d-text">Flexible Summer Schedule</div>
+      </div>
+      <div class="detail-item">
+        <div class="d-icon">💻</div>
+        <div class="d-text">In-Person &amp; Online Options</div>
+      </div>
+      <div class="detail-item">
+        <div class="d-icon">👥</div>
+        <div class="d-text">Small Group &amp; 1-on-1 Tutoring</div>
+      </div>
+      <div class="detail-item">
+        <div class="d-icon">⚡</div>
+        <div class="d-text">Limited Seats Available</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHO CAN JOIN -->
+  <div class="who">
+    <div class="section-title">Who Can Join?</div>
+    <div class="who-grid">
+      <div class="who-item">
+        <div class="check-circle">✓</div>
+        <div class="who-text">Students wanting to improve grades</div>
+      </div>
+      <div class="who-item">
+        <div class="check-circle">✓</div>
+        <div class="who-text">Preparing for next year's math courses</div>
+      </div>
+      <div class="who-item">
+        <div class="check-circle">✓</div>
+        <div class="who-text">Needing extra practice &amp; confidence</div>
+      </div>
+      <div class="who-item">
+        <div class="check-circle">✓</div>
+        <div class="who-text">Advanced learners seeking enrichment</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact">
+    <div class="contact-title">Register Today!</div>
+    <div class="contact-row">
+      <span class="c-icon">📞</span>
+      <span class="c-label">Phone</span>
+      <span class="c-value">_______________________</span>
+    </div>
+    <div class="contact-row">
+      <span class="c-icon">✉</span>
+      <span class="c-label">Email</span>
+      <span class="c-value">_______________________</span>
+    </div>
+    <div class="contact-row">
+      <span class="c-icon">📍</span>
+      <span class="c-label">Location</span>
+      <span class="c-value">_______________________</span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-text">Let's make this your best year yet!</div>
+  </div>
+
+</div>
+</body>
+</html>

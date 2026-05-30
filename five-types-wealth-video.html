@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Five Types of Wealth</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+  }
+
+  /* 9:16 portrait frame */
+  .frame {
+    width: min(100vw, calc(100vh * 9 / 16));
+    height: min(100vh, calc(100vw * 16 / 9));
+    background: #000;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* progress bar */
+  .prog {
+    position: absolute;
+    bottom: 0; left: 0;
+    height: 5px;
+    background: #f5c800;
+    z-index: 200;
+    width: 0;
+  }
+
+  /* slide counter */
+  .counter {
+    position: absolute;
+    top: 20px; right: 22px;
+    font-size: 11px;
+    font-weight: 800;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 2px;
+    z-index: 200;
+  }
+
+  /* ── BASE SLIDE ── */
+  .slide {
+    position: absolute;
+    inset: 0;
+    padding: 6% 9%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    background: #000;
+  }
+
+  /* ── SHARED ANIMATION ELEMENTS ── */
+  @keyframes up {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0);    }
+  }
+  @keyframes growLine {
+    from { opacity: 0; width: 0; }
+    to   { opacity: 1; width: 56px; }
+  }
+  @keyframes growLineLong {
+    from { opacity: 0; width: 0; }
+    to   { opacity: 1; width: 90px; }
+  }
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.85); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  /* ── TITLE SLIDE ── */
+  .t-eyebrow {
+    font-size: 12px;
+    font-weight: 800;
+    color: #f5c800;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    opacity: 0;
+  }
+  .t-main {
+    font-size: clamp(68px, 14vw, 96px);
+    font-weight: 900;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 0.93;
+    margin-bottom: 24px;
+    opacity: 0;
+  }
+  .t-main .yel { color: #f5c800; }
+  .t-line {
+    height: 5px;
+    background: #f5c800;
+    border-radius: 3px;
+    width: 0;
+    margin-bottom: 22px;
+    opacity: 0;
+  }
+  .t-sub {
+    font-size: clamp(14px, 2.5vw, 18px);
+    font-weight: 600;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.6;
+    opacity: 0;
+  }
+
+  /* ── STAGE SLIDES ── */
+  .s-num {
+    font-size: clamp(10px, 1.8vw, 14px);
+    font-weight: 800;
+    color: #f5c800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    opacity: 0;
+  }
+  .s-name {
+    font-size: clamp(52px, 11vw, 76px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.95;
+    margin-bottom: 14px;
+    opacity: 0;
+    color: #fff;
+  }
+  .s-name.yel { color: #f5c800; }
+  .s-age {
+    display: inline-block;
+    background: #f5c800;
+    color: #000;
+    font-size: clamp(12px, 2.2vw, 15px);
+    font-weight: 900;
+    padding: 6px 18px;
+    border-radius: 30px;
+    margin-bottom: 22px;
+    opacity: 0;
+  }
+  .s-divider {
+    height: 4px;
+    background: #f5c800;
+    border-radius: 2px;
+    width: 0;
+    margin-bottom: 24px;
+    opacity: 0;
+  }
+
+  .bullets { list-style: none; }
+  .b-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 14px;
+    opacity: 0;
+  }
+  .b-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: #f5c800;
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+  .b-txt {
+    font-size: clamp(17px, 3.4vw, 22px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.5;
+  }
+  .b-txt .yel { color: #f5c800; }
+
+  .corpus {
+    background: rgba(245,200,0,0.1);
+    border: 2px solid rgba(245,200,0,0.4);
+    border-radius: 10px;
+    padding: 14px 20px;
+    margin-top: 8px;
+    opacity: 0;
+  }
+  .corpus .c-lbl {
+    font-size: 10px;
+    font-weight: 800;
+    color: rgba(245,200,0,0.65);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .corpus .c-val {
+    font-size: clamp(18px, 3.6vw, 24px);
+    font-weight: 900;
+    color: #f5c800;
+  }
+
+  /* ── OUTRO SLIDE ── */
+  .o-q {
+    font-size: clamp(36px, 8vw, 54px);
+    font-weight: 900;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    opacity: 0;
+  }
+  .o-q .yel { color: #f5c800; }
+  .o-sub {
+    font-size: clamp(13px, 2.4vw, 16px);
+    font-weight: 600;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+    margin-bottom: 32px;
+    opacity: 0;
+  }
+  .o-card {
+    background: #f5c800;
+    border-radius: 12px;
+    padding: 24px 28px;
+    opacity: 0;
+  }
+  .o-name {
+    font-size: clamp(20px, 4vw, 26px);
+    font-weight: 900;
+    color: #000;
+    margin-bottom: 2px;
+  }
+  .o-role {
+    font-size: clamp(10px, 1.8vw, 13px);
+    font-weight: 700;
+    color: rgba(0,0,0,0.55);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .o-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .o-row:last-child { margin-bottom: 0; }
+  .o-icon { font-size: clamp(14px, 2.6vw, 17px); }
+  .o-info { font-size: clamp(14px, 2.8vw, 17px); font-weight: 800; color: #000; }
+  .o-region {
+    font-size: clamp(11px, 2vw, 14px);
+    font-weight: 600;
+    color: rgba(0,0,0,0.55);
+    font-style: italic;
+    margin-top: 10px;
+  }
+
+  /* yellow left accent bar */
+  .accent {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 5px;
+    background: repeating-linear-gradient(
+      180deg, #f5c800 0px, #f5c800 20px, #000 20px, #000 40px
+    );
+    opacity: 0.5;
+  }
+</style>
+</head>
+<body>
+<div class="frame" id="frame">
+  <div class="accent"></div>
+  <div class="prog" id="prog"></div>
+  <div class="counter" id="counter">1 / 7</div>
+
+  <!-- ── SLIDE 0: TITLE ── -->
+  <div class="slide" id="s0">
+    <div class="t-eyebrow">Financial Education</div>
+    <div class="t-main">FIVE<br><span class="yel">TYPES</span><br>OF<br>WEALTH</div>
+    <div class="t-line"></div>
+    <div class="t-sub">Understanding the 5 financial stages<br>every salaried person must know</div>
+  </div>
+
+  <!-- ── SLIDE 1: SURVIVAL ── -->
+  <div class="slide" id="s1">
+    <div class="s-num">Stage 1 of 5</div>
+    <div class="s-name">Survival</div>
+    <div class="s-age">Age: 25 – 30 Years</div>
+    <div class="s-divider"></div>
+    <ul class="bullets">
+      <li class="b-item"><div class="b-dot"></div><div class="b-txt">Whatever you earn, you spend</div></li>
+      <li class="b-item"><div class="b-dot"></div><div class="b-txt">Unable to save much money</div></li>
+      <li class="b-item"><div class="b-dot"></div><div class="b-txt">Income barely covers expenses</div></li>
+      <li class="b-item"><div class="b-dot"></div><div class="b-txt">Still building the foundation</div></li>
+    </ul>
+  </div>
+
+  <!-- ── SLIDE 2: SECURITY ── -->
+  <div class="slide" id="s2">
+    <div class="s-num">Stage 2 of 5</div>
+    <div class="s-name">Security</div>
+    <div class="s-age">Age: 30 – 35 Years</div>
+    <div class="s-divider"></div>
+    <ul class="bullets">
+      <li class="b-item"><div class="b-dot"></div><div class="b-txt">Getting married, expenses rising</div></li>
+      <li class="b-item"><div class="b-dot"></div><div class="b-txt">Income growing, life stabilizing</div></li>
+      <li class="b-item"><div class="b-dot"></div><div class="b-txt">More financially secure than before</div></li>
+      <li class="b-item"><div class="b-dot"></div><div class="b-txt">Not yet ready for early retirement</div></li>
+    </ul>
+  </div>
+
+  <!-- ── SLIDE 3: STABILITY ── -->
+  <div class="slide" id="s3">
+    <div class="s-num">Stage 3 of 5</div>
+    <div class="s-name">Stability</div>
+    <div class="s-age">Age: 35 – 45 Years</div>
+    <div class="s-divider"></div>
+    <ul class="bullets">
+      <li class="b-item"><div class="b-dot"></div><div class="b-txt">Income growing well</div></li>
+      <li class="b-item"><div class="b-dot"></div><div class="b-txt">House purchased, loan manageable</div></li>
+      <li class="b-item"><div class="b-dot"></div><div class="b-txt">Children in good schools</div></li>
+      <li class="b-item"><div class="b-dot"></div><div class="b-txt">Regular investments in place</div></li>
+    </ul>
+    <div class="corpus">
+      <div class="c-lbl">Investment Corpus</div>
+      <div class="c-val">1× – 2× Annual Salary</div>
+    </div>
+  </div>
+
+  <!-- ── SLIDE 4: FREEDOM ── -->
+  <div class="slide" id="s4">
+    <div class="s-num">Stage 4 of 5</div>
+    <div class="s-name yel">Freedom</div>
+    <div class="s-age">Age: 45 – 55 Years</div>
+    <div class="s-divider"></div>
+    <ul class="bullets">
+      <li class="b-item"><div class="b-dot"></div><div class="b-txt">Income very strong</div></li>
+      <li class="b-item"><div class="b-dot"></div><div class="b-txt">Home fully paid off</div></li>
+      <li class="b-item"><div class="b-dot"></div><div class="b-txt">Can quit job &amp; live on passive income</div></li>
+      <li class="b-item"><div class="b-dot"></div><div class="b-txt">Travel, pursue passions freely</div></li>
+    </ul>
+    <div class="corpus">
+      <div class="c-lbl">Investment Corpus</div>
+      <div class="c-val">5× – 8× Annual Salary</div>
+    </div>
+  </div>
+
+  <!-- ── SLIDE 5: ABUNDANCE ── -->
+  <div class="slide" id="s5">
+    <div class="s-num">Stage 5 of 5</div>
+    <div class="s-name yel">Abundance</div>
+    <div class="s-age">Age: 60+ Years</div>
+    <div class="s-divider"></div>
+    <ul class="bullets">
+      <li class="b-item"><div class="b-dot"></div><div class="b-txt">Massive wealth accumulated</div></li>
+      <li class="b-item"><div class="b-dot"></div><div class="b-txt">Multiple businesses or offices</div></li>
+      <li class="b-item"><div class="b-dot"></div><div class="b-txt">Support charitable causes</div></li>
+      <li class="b-item"><div class="b-dot"></div><div class="b-txt">Create positive change in society</div></li>
+    </ul>
+    <div class="corpus">
+      <div class="c-lbl">Investment Corpus</div>
+      <div class="c-val">10× – 20×+ Annual Salary</div>
+    </div>
+  </div>
+
+  <!-- ── SLIDE 6: OUTRO ── -->
+  <div class="slide" id="s6">
+    <div class="o-q">Where are<br>you <span class="yel">today?</span></div>
+    <div class="o-sub">Evaluate your current stage and take<br>the next step toward financial freedom.</div>
+    <div class="o-card">
+      <div class="o-name">Yogesh Mainrai</div>
+      <div class="o-role">Financial Security Advisor</div>
+      <div class="o-row"><span class="o-icon">📞</span><span class="o-info">236 517 0003</span></div>
+      <div class="o-row"><span class="o-icon">✉</span><span class="o-info">yogeshmainrai.financials@gmail.com</span></div>
+      <div class="o-region">Serving in BC, Alberta &amp; Ontario</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const SLIDE_MS   = 7500;  // time each slide stays visible (slow)
+  const TRANS_MS   = 800;   // fade transition
+  const NUM_SLIDES = 7;
+
+  // Per-slide animation specs: [cssSelector, delaySeconds]
+  const ANIMS = [
+    // slide 0 – title
+    [['.t-eyebrow',0.3],['.t-main',0.7],['.t-line',1.15],['.t-sub',1.5]],
+    // slide 1 – survival
+    [['.s-num',0.2],['.s-name',0.45],['.s-age',0.7],['.s-divider',0.95],
+     ['.b-item:nth-child(1)',1.2],['.b-item:nth-child(2)',1.65],
+     ['.b-item:nth-child(3)',2.1],['.b-item:nth-child(4)',2.55]],
+    // slide 2 – security
+    [['.s-num',0.2],['.s-name',0.45],['.s-age',0.7],['.s-divider',0.95],
+     ['.b-item:nth-child(1)',1.2],['.b-item:nth-child(2)',1.65],
+     ['.b-item:nth-child(3)',2.1],['.b-item:nth-child(4)',2.55]],
+    // slide 3 – stability
+    [['.s-num',0.2],['.s-name',0.45],['.s-age',0.7],['.s-divider',0.95],
+     ['.b-item:nth-child(1)',1.2],['.b-item:nth-child(2)',1.65],
+     ['.b-item:nth-child(3)',2.1],['.b-item:nth-child(4)',2.55],
+     ['.corpus',3.0]],
+    // slide 4 – freedom
+    [['.s-num',0.2],['.s-name',0.45],['.s-age',0.7],['.s-divider',0.95],
+     ['.b-item:nth-child(1)',1.2],['.b-item:nth-child(2)',1.65],
+     ['.b-item:nth-child(3)',2.1],['.b-item:nth-child(4)',2.55],
+     ['.corpus',3.0]],
+    // slide 5 – abundance
+    [['.s-num',0.2],['.s-name',0.45],['.s-age',0.7],['.s-divider',0.95],
+     ['.b-item:nth-child(1)',1.2],['.b-item:nth-child(2)',1.65],
+     ['.b-item:nth-child(3)',2.1],['.b-item:nth-child(4)',2.55],
+     ['.corpus',3.0]],
+    // slide 6 – outro
+    [['.o-q',0.4],['.o-sub',0.9],['.o-card',1.4]],
+  ];
+
+  let cur = 0;
+  let mainTimer = null;
+
+  function animateSlide(slideEl, anims) {
+    anims.forEach(([sel, delay]) => {
+      const el = slideEl.querySelector(sel);
+      if (!el) return;
+      el.style.animation = 'none';
+      el.style.opacity   = '0';
+      void el.offsetWidth; // force reflow
+      if (sel === '.t-line' || sel === '.s-divider') {
+        el.style.animation = `growLineLong 0.55s ease ${delay}s forwards`;
+      } else {
+        el.style.animation = `up 0.55s ease ${delay}s forwards`;
+      }
+    });
+  }
+
+  function showSlide(idx) {
+    const slides = document.querySelectorAll('.slide');
+
+    // fade out current
+    const old = slides[cur];
+    old.style.transition = `opacity ${TRANS_MS}ms ease`;
+    old.style.opacity = '0';
+
+    cur = idx;
+    const next = slides[idx];
+
+    // reset all animated children to hidden
+    const allAnim = next.querySelectorAll(
+      '.t-eyebrow,.t-main,.t-line,.t-sub,' +
+      '.s-num,.s-name,.s-age,.s-divider,' +
+      '.b-item,.corpus,.o-q,.o-sub,.o-card'
+    );
+    allAnim.forEach(el => {
+      el.style.animation = 'none';
+      el.style.opacity   = '0';
+    });
+
+    setTimeout(() => {
+      next.style.transition = `opacity ${TRANS_MS * 0.75}ms ease`;
+      next.style.opacity = '1';
+      animateSlide(next, ANIMS[idx]);
+    }, TRANS_MS);
+
+    // counter
+    document.getElementById('counter').textContent = `${idx + 1} / ${NUM_SLIDES}`;
+
+    // progress bar
+    const prog = document.getElementById('prog');
+    prog.style.transition = 'none';
+    prog.style.width = '0%';
+    setTimeout(() => {
+      prog.style.transition = `width ${SLIDE_MS}ms linear`;
+      prog.style.width = '100%';
+    }, TRANS_MS + 50);
+  }
+
+  function advance() {
+    const next = (cur + 1) % NUM_SLIDES;
+    showSlide(next);
+    clearTimeout(mainTimer);
+    mainTimer = setTimeout(advance, SLIDE_MS + TRANS_MS);
+  }
+
+  // Click anywhere to skip to next slide
+  document.getElementById('frame').addEventListener('click', () => {
+    clearTimeout(mainTimer);
+    advance();
+  });
+
+  // Init first slide
+  const first = document.getElementById('s0');
+  first.style.opacity = '1';
+  animateSlide(first, ANIMS[0]);
+  document.getElementById('prog').style.transition = `width ${SLIDE_MS}ms linear`;
+  document.getElementById('prog').style.width = '100%';
+  mainTimer = setTimeout(advance, SLIDE_MS);
+</script>
+</body>
+</html>

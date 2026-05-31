@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Alliances</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    display: flex; justify-content: center; align-items: center;
+    min-height: 100vh; background: #ddd;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .slide {
+    width: 1080px;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    padding: 36px 60px 28px;
+    text-align: center;
+    border-bottom: 3px solid #f0f0f0;
+  }
+  .title {
+    font-size: 48px;
+    font-weight: 900;
+    color: #1e3a6e;
+    letter-spacing: -0.5px;
+  }
+  .title-line {
+    width: 70px; height: 4px;
+    background: #f5c800;
+    border-radius: 2px;
+    margin: 10px auto 0;
+  }
+
+  /* ── LOGO GRID ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    padding: 40px 50px;
+  }
+
+  .logo-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+  }
+
+  /* ── INDIVIDUAL LOGO STYLES ── */
+  .logo { display: flex; align-items: center; gap: 10px; }
+
+  /* Desjardins */
+  .logo-desjardins .icon {
+    width: 44px; height: 44px;
+    background: #00843D;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    flex-shrink: 0;
+  }
+  .logo-desjardins .icon::after {
+    content: '';
+    display: block;
+    width: 22px; height: 22px;
+    background: #fff;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    margin: 11px auto;
+  }
+  .logo-desjardins span { font-size: 26px; font-weight: 800; color: #00843D; }
+
+  /* RBC */
+  .logo-rbc .box {
+    width: 56px; height: 60px;
+    background: #005DAA;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .logo-rbc .box span { font-size: 20px; font-weight: 900; color: #FFD700; letter-spacing: -1px; }
+
+  /* Manulife */
+  .logo-manulife .bars {
+    display: flex; gap: 4px; align-items: flex-end; flex-shrink: 0;
+  }
+  .logo-manulife .bars div {
+    width: 8px; border-radius: 2px 2px 0 0; background: #00A758;
+  }
+  .logo-manulife .bars div:nth-child(1) { height: 20px; }
+  .logo-manulife .bars div:nth-child(2) { height: 30px; }
+  .logo-manulife .bars div:nth-child(3) { height: 40px; }
+  .logo-manulife span { font-size: 26px; font-weight: 800; color: #1a1a1a; }
+
+  /* Blue Cross */
+  .logo-bluecross .cross {
+    width: 36px; height: 36px; position: relative; flex-shrink: 0;
+  }
+  .logo-bluecross .cross::before,
+  .logo-bluecross .cross::after {
+    content: ''; position: absolute; background: #0072CE; border-radius: 2px;
+  }
+  .logo-bluecross .cross::before { width: 36px; height: 12px; top: 12px; left: 0; }
+  .logo-bluecross .cross::after  { width: 12px; height: 36px; top: 0; left: 12px; }
+  .logo-bluecross span { font-size: 22px; font-weight: 900; color: #0072CE; letter-spacing: 1px; }
+
+  /* Equitable */
+  .logo-equitable .ring {
+    width: 38px; height: 38px;
+    border: 5px solid #00B5B5;
+    border-radius: 50%;
+    position: relative; flex-shrink: 0;
+  }
+  .logo-equitable .ring::after {
+    content: ''; position: absolute;
+    width: 8px; height: 8px;
+    background: #00B5B5; border-radius: 50%;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .logo-equitable span { font-size: 26px; font-weight: 700; color: #1a1a1a; }
+
+  /* IA Financial Group */
+  .logo-ia .ia-text { font-size: 36px; font-weight: 900; color: #003DA5; line-height: 1; }
+  .logo-ia .sub { font-size: 15px; font-weight: 700; color: #555; line-height: 1.3; }
+
+  /* RIMI */
+  .logo-rimi .box {
+    background: #5B2D8E; padding: 8px 14px; border-radius: 4px;
+  }
+  .logo-rimi .box span { font-size: 24px; font-weight: 900; color: #fff; letter-spacing: 2px; }
+  .logo-rimi .sub { font-size: 12px; font-weight: 700; color: #5B2D8E; letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; text-align: center; }
+  .logo-rimi { flex-direction: column; align-items: center; gap: 4px !important; }
+
+  /* BMO */
+  .logo-bmo .bmo-text { font-size: 30px; font-weight: 900; color: #0079C1; }
+  .logo-bmo .dot {
+    width: 36px; height: 36px;
+    background: #D32F2F; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .logo-bmo .dot span { font-size: 18px; color: #fff; }
+
+  /* Travelance */
+  .logo-travelance .swoosh {
+    width: 44px; height: 30px; position: relative; flex-shrink: 0;
+  }
+  .logo-travelance .swoosh::before {
+    content: '';
+    position: absolute;
+    width: 40px; height: 14px;
+    border-bottom: 5px solid #005CA9;
+    border-radius: 0 0 50% 50%;
+    top: 0; left: 2px;
+  }
+  .logo-travelance .swoosh::after {
+    content: '';
+    position: absolute;
+    width: 30px; height: 10px;
+    border-bottom: 5px solid #6CB33F;
+    border-radius: 0 0 50% 50%;
+    top: 10px; left: 7px;
+  }
+  .logo-travelance span { font-size: 24px; font-weight: 800; color: #005CA9; }
+
+  /* ── CONTACT BAR ── */
+  .contact-bar {
+    background: #1e3a6e;
+    padding: 22px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .c-name-block .name {
+    font-size: 22px; font-weight: 900; color: #fff;
+  }
+  .c-name-block .role {
+    font-size: 12px; font-weight: 700;
+    color: rgba(255,255,255,0.65);
+    text-transform: uppercase; letter-spacing: 2px;
+    margin-top: 3px;
+  }
+  .c-details { display: flex; gap: 28px; align-items: center; }
+  .c-item { display: flex; align-items: center; gap: 8px; }
+  .c-icon { font-size: 16px; }
+  .c-text { font-size: 15px; font-weight: 700; color: #fff; white-space: nowrap; }
+  .c-text-sm { font-size: 13px; font-weight: 700; color: #fff; white-space: nowrap; }
+  .c-region {
+    font-size: 13px; font-weight: 600;
+    color: #f5c800; font-style: italic;
+  }
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="title">Our Alliances</div>
+    <div class="title-line"></div>
+  </div>
+
+  <!-- LOGO GRID -->
+  <div class="grid">
+
+    <!-- Desjardins -->
+    <div class="logo-cell">
+      <div class="logo logo-desjardins">
+        <div class="icon"></div>
+        <span>Desjardins</span>
+      </div>
+    </div>
+
+    <!-- RBC -->
+    <div class="logo-cell">
+      <div class="logo logo-rbc">
+        <div class="box"><span>RBC</span></div>
+      </div>
+    </div>
+
+    <!-- Manulife -->
+    <div class="logo-cell">
+      <div class="logo logo-manulife">
+        <div class="bars">
+          <div></div><div></div><div></div>
+        </div>
+        <span>Manulife</span>
+      </div>
+    </div>
+
+    <!-- Blue Cross -->
+    <div class="logo-cell">
+      <div class="logo logo-bluecross">
+        <div class="cross"></div>
+        <span>BLUE CROSS</span>
+      </div>
+    </div>
+
+    <!-- Equitable -->
+    <div class="logo-cell">
+      <div class="logo logo-equitable">
+        <div class="ring"></div>
+        <span>Equitable</span>
+      </div>
+    </div>
+
+    <!-- IA Financial Group -->
+    <div class="logo-cell">
+      <div class="logo logo-ia" style="gap:6px">
+        <div class="ia-text">IA</div>
+        <div class="sub">Financial<br>Group</div>
+      </div>
+    </div>
+
+    <!-- RIMI -->
+    <div class="logo-cell">
+      <div class="logo logo-rimi">
+        <div class="box"><span>RIMI</span></div>
+        <div class="sub">Secure Travel</div>
+      </div>
+    </div>
+
+    <!-- BMO -->
+    <div class="logo-cell">
+      <div class="logo logo-bmo" style="gap:10px">
+        <div class="bmo-text">BMO</div>
+        <div class="dot"><span>⛰</span></div>
+      </div>
+    </div>
+
+    <!-- Travelance -->
+    <div class="logo-cell">
+      <div class="logo logo-travelance">
+        <div class="swoosh"></div>
+        <span>Travelance</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CONTACT BAR -->
+  <div class="contact-bar">
+    <div class="c-name-block">
+      <div class="name">Yogesh K Mainrai</div>
+      <div class="role">Financial Security Advisor</div>
+    </div>
+    <div class="c-details">
+      <div class="c-item">
+        <span class="c-icon">📞</span>
+        <span class="c-text">236 517 0003</span>
+      </div>
+      <div class="c-item">
+        <span class="c-icon">✉</span>
+        <span class="c-text-sm">yogeshmainrai.financials@gmail.com</span>
+      </div>
+      <div class="c-region">BC · Alberta · Ontario</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

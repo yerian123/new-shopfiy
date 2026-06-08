@@ -22,10 +22,10 @@ from flask import Flask, jsonify, request
 # ──────────────────────────────────────────────────────────────────────────────
 # Configuration — replace with your real keys or load from environment variables
 # ──────────────────────────────────────────────────────────────────────────────
-ANTHROPIC_API_KEY  = "your_anthropic_key_here"
-NEWS_API_KEY       = "your_newsapi_key_here"
-NOTION_API_KEY     = "your_notion_key_here"
-NOTION_DATABASE_ID = "your_notion_database_id_here"
+ANTHROPIC_API_KEY  = "your_anthropic_key_here"   # platform.anthropic.com
+NEWS_API_KEY       = "your_newsapi_key_here"      # newsapi.org (free)
+NOTION_API_KEY     = "your_notion_key_here"       # notion.so/my-integrations
+NOTION_DATABASE_ID = "b1bb78d2002d4c759b24c5f3b4cc3b93"  # pre-created: "Trading Intelligence Reports"
 
 # Webhook server settings
 WEBHOOK_HOST = "0.0.0.0"

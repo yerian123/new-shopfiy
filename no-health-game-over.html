@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>No Health = Game Over</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    display: flex; justify-content: center; align-items: center;
+    min-height: 100vh; background: #444;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .slide {
+    width: 1080px;
+    height: 608px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* ── LEFT GOLD SIDEBAR ── */
+  .sidebar {
+    width: 190px;
+    flex-shrink: 0;
+    background: linear-gradient(180deg, #f5c800 0%, #e8a800 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10px;
+    position: relative;
+  }
+
+  .sidebar-icon {
+    font-size: 38px;
+    margin-bottom: 10px;
+  }
+
+  .sidebar-title {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 26px;
+    font-weight: 900;
+    color: #1a1a1a;
+    line-height: 1.1;
+    text-align: center;
+    padding: 10px 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ── MAIN AREA ── */
+  .main {
+    flex: 1;
+    background:
+      repeating-linear-gradient(
+        135deg,
+        rgba(255,255,255,0.18) 0px,
+        rgba(255,255,255,0.18) 1px,
+        transparent 1px,
+        transparent 22px
+      ),
+      #b8cce4;
+    display: flex;
+    flex-direction: column;
+    padding: 22px 30px 0;
+    position: relative;
+  }
+
+  /* ── TOP ROW ── */
+  .top-row {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    margin-bottom: 18px;
+    flex: 1;
+  }
+
+  .quote-block {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  .quote-text {
+    font-size: 17px;
+    font-style: italic;
+    font-weight: 700;
+    color: #1a3a6e;
+    line-height: 1.6;
+  }
+
+  /* ── GAME OVER BOX ── */
+  .game-over-box {
+    background: #111;
+    border: 3px solid #333;
+    padding: 10px 12px;
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .go-letter {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 38px;
+    line-height: 1.1;
+    text-align: center;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+  }
+
+  /* ── BULLETS ── */
+  .bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 0;
+    padding-bottom: 14px;
+  }
+  .bullet {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+  .bullet-icon { font-size: 17px; flex-shrink: 0; }
+
+  /* ── CONTACT FOOTER ── */
+  .contact-footer {
+    background: #1e3a6e;
+    margin: 0 -30px;
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .cf-left { display: flex; flex-direction: column; }
+  .cf-info { font-size: 11px; font-weight: 700; color: #f5c800; margin-bottom: 1px; }
+  .cf-name { font-size: 15px; font-weight: 900; color: #fff; }
+  .cf-role { font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 1px; }
+  .cf-right { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .cf-item { display: flex; align-items: center; gap: 6px; }
+  .cf-icon { font-size: 13px; }
+  .cf-text { font-size: 13px; font-weight: 700; color: #fff; white-space: nowrap; }
+  .cf-text-sm { font-size: 11px; font-weight: 700; color: #fff; white-space: nowrap; }
+  .cf-region { font-size: 11px; font-weight: 600; color: #f5c800; font-style: italic; }
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <!-- GOLD SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-icon">🎮</div>
+    <div class="sidebar-title">No Health = Game Over</div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main">
+    <div class="top-row">
+
+      <div class="quote-block">
+        <div class="quote-text">Not optional...it's the<br>foundation.</div>
+      </div>
+
+      <!-- GAME OVER retro box -->
+      <div class="game-over-box">
+        <div class="go-letter" style="color:#FFD700">G</div>
+        <div class="go-letter" style="color:#44DD44">A</div>
+        <div class="go-letter" style="color:#4488FF">M</div>
+        <div class="go-letter" style="color:#FF3333">E</div>
+        <div class="go-letter" style="color:#FF6600">O</div>
+        <div class="go-letter" style="color:#AADD00">V</div>
+        <div class="go-letter" style="color:#FFD700">E</div>
+        <div class="go-letter" style="color:#4488FF">R</div>
+      </div>
+
+    </div>
+
+    <!-- BULLETS -->
+    <div class="bullets">
+      <div class="bullet"><span class="bullet-icon">🎮</span> Business stops</div>
+      <div class="bullet"><span class="bullet-icon">🎮</span> Income stops</div>
+      <div class="bullet"><span class="bullet-icon">🎮</span> Bills don't</div>
+      <div class="bullet"><span class="bullet-icon">🎮</span> Recovery takes time</div>
+      <div class="bullet"><span class="bullet-icon">🎮</span> CI buys options</div>
+    </div>
+
+    <!-- CONTACT FOOTER -->
+    <div class="contact-footer">
+      <div class="cf-left">
+        <div class="cf-info">For more information:</div>
+        <div class="cf-name">Yogesh K Mainrai</div>
+        <div class="cf-role">Financial Security Advisor</div>
+      </div>
+      <div class="cf-right">
+        <div class="cf-item"><span class="cf-icon">📞</span><span class="cf-text">236 517 0003</span></div>
+        <div class="cf-item"><span class="cf-icon">✉</span><span class="cf-text-sm">yogeshmainrai.financials@gmail.com</span></div>
+        <div class="cf-region">BC · Alberta · Ontario</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

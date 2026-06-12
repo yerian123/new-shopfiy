@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Critical Illness</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    display: flex; justify-content: center; align-items: center;
+    min-height: 100vh; background: #444;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .slide {
+    width: 1080px;
+    height: 608px;
+    display: flex;
+    overflow: hidden;
+  }
+
+  /* ── LEFT BLUE SIDEBAR ── */
+  .sidebar {
+    width: 190px;
+    flex-shrink: 0;
+    background: #1565C0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10px;
+  }
+
+  /* Shield/target icon */
+  .shield-icon {
+    width: 54px; height: 54px;
+    border: 5px solid #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .shield-inner {
+    width: 26px; height: 26px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .shield-dot { width: 10px; height: 10px; background: #1565C0; border-radius: 50%; }
+
+  .sidebar-title {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 28px;
+    font-weight: 900;
+    color: #fff;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+  }
+
+  /* ── MAIN AREA ── */
+  .main {
+    flex: 1;
+    background:
+      repeating-linear-gradient(
+        135deg,
+        rgba(255,255,255,0.18) 0px,
+        rgba(255,255,255,0.18) 1px,
+        transparent 1px,
+        transparent 22px
+      ),
+      #b8cce4;
+    display: flex;
+    padding: 20px 28px 0;
+    gap: 24px;
+    flex-direction: column;
+  }
+
+  .content-row {
+    display: flex;
+    gap: 28px;
+    flex: 1;
+  }
+
+  /* ── CAPTAIN AMERICA SHIELD (CSS) ── */
+  .shield-wrap {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ca-shield {
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: #CC0000;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.35);
+  }
+  .ca-ring2 {
+    width: 128px; height: 128px;
+    border-radius: 50%;
+    background: #fff;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ca-ring3 {
+    width: 96px; height: 96px;
+    border-radius: 50%;
+    background: #CC0000;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ca-center {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: #0033AA;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+  }
+
+  /* ── BULLETS ── */
+  .bullets-block {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .bullet {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.45;
+  }
+  .bullet-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: #1565C0;
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+  .bullet span.bold { font-weight: 900; }
+
+  .ci-note {
+    font-size: 14px;
+    font-style: italic;
+    color: #1a3a6e;
+    font-weight: 600;
+    padding: 8px 0;
+    border-top: 2px solid rgba(21,101,192,0.25);
+    margin-top: 4px;
+  }
+  .ci-note strong { font-weight: 900; color: #1565C0; }
+
+  /* ── CONTACT FOOTER ── */
+  .contact-footer {
+    background: #1e3a6e;
+    margin: 0 -28px;
+    padding: 10px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .cf-left { display: flex; flex-direction: column; }
+  .cf-info { font-size: 11px; font-weight: 700; color: #f5c800; margin-bottom: 1px; }
+  .cf-name { font-size: 15px; font-weight: 900; color: #fff; }
+  .cf-role { font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 1px; }
+  .cf-right { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .cf-item { display: flex; align-items: center; gap: 6px; }
+  .cf-icon { font-size: 13px; }
+  .cf-text { font-size: 13px; font-weight: 700; color: #fff; white-space: nowrap; }
+  .cf-text-sm { font-size: 11px; font-weight: 700; color: #fff; white-space: nowrap; }
+  .cf-region { font-size: 11px; font-weight: 600; color: #f5c800; font-style: italic; }
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <!-- BLUE SIDEBAR -->
+  <div class="sidebar">
+    <div class="shield-icon">
+      <div class="shield-inner">
+        <div class="shield-dot"></div>
+      </div>
+    </div>
+    <div class="sidebar-title">Critical Illness</div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main">
+
+    <div class="content-row">
+
+      <!-- Captain America Shield -->
+      <div class="shield-wrap">
+        <div class="ca-shield">
+          <div class="ca-ring2">
+            <div class="ca-ring3">
+              <div class="ca-center">⭐</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bullets -->
+      <div class="bullets-block">
+        <div class="bullet">
+          <div class="bullet-dot"></div>
+          <div><span class="bold">CASH</span> that shows up while alive</div>
+        </div>
+        <div class="bullet">
+          <div class="bullet-dot"></div>
+          <div>Takes care of expenses — rent, payroll, etc.</div>
+        </div>
+        <div class="bullet">
+          <div class="bullet-dot"></div>
+          <div>Buys recovery time → so family life keeps moving</div>
+        </div>
+        <div class="bullet">
+          <div class="bullet-dot"></div>
+          <div>Protects the Income &amp; Business</div>
+        </div>
+        <div class="ci-note">
+          CI is not about a diagnosis, it's about <strong>Maintenance</strong>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CONTACT FOOTER -->
+    <div class="contact-footer">
+      <div class="cf-left">
+        <div class="cf-info">For more information:</div>
+        <div class="cf-name">Yogesh K Mainrai</div>
+        <div class="cf-role">Financial Security Advisor</div>
+      </div>
+      <div class="cf-right">
+        <div class="cf-item"><span class="cf-icon">📞</span><span class="cf-text">236 517 0003</span></div>
+        <div class="cf-item"><span class="cf-icon">✉</span><span class="cf-text-sm">yogeshmainrai.financials@gmail.com</span></div>
+        <div class="cf-region">BC · Alberta · Ontario</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

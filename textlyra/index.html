@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TextLyra — AI Receptionists on WhatsApp, SMS & Phone | Surrey & Metro Vancouver</title>
-<meta name="description" content="TextLyra gives local businesses in Surrey, Metro Vancouver and beyond a 24/7 AI receptionist on WhatsApp, SMS and phone that answers customers, books appointments, and recovers missed calls — automatically.">
+<title>TextLyra — AI Receptionists for Local Businesses | Surrey & Metro Vancouver</title>
+<meta name="description" content="TextLyra gives local businesses a 24/7 AI receptionist on WhatsApp, SMS and phone that answers customers, books appointments, and recovers missed calls — automatically.">
 <meta property="og:title" content="TextLyra — Your business, answering every customer. 24/7.">
 <meta property="og:description" content="AI receptionists on WhatsApp, SMS & phone for local businesses. Never lose another customer to voicemail. Founding spots open — 50% off for life.">
 <meta property="og:type" content="website">
@@ -23,24 +23,20 @@
   html{scroll-behavior:smooth}
   body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
   .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
-  section{padding:88px 0}
-
-  /* Nav */
+  section{padding:72px 0}
   nav{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
   .logo{font-weight:800;font-size:1.35rem;letter-spacing:-.02em;text-decoration:none;color:var(--ink)}
   .logo span{color:var(--accent)}
   .nav-links{display:flex;gap:28px;align-items:center}
   .nav-links a{color:var(--muted);text-decoration:none;font-size:.95rem}
-  .nav-links a:hover{color:var(--ink)}
+  .nav-links a:hover,.nav-links a.active{color:var(--ink)}
   .btn{display:inline-block;padding:13px 26px;border-radius:10px;font-weight:700;text-decoration:none;border:none;cursor:pointer;font-size:1rem;transition:transform .15s ease,box-shadow .15s ease}
   .btn-primary{background:var(--accent);color:#04170B}
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.35)}
   .btn-ghost{border:1px solid var(--line);color:var(--ink);background:transparent}
   .btn-sm{padding:9px 18px;font-size:.9rem}
-
-  /* Hero */
-  .hero{padding:96px 0 72px;background:
+  .hero{padding:80px 0 64px;background:
     radial-gradient(700px 400px at 85% -10%,rgba(37,211,102,.14),transparent),
     radial-gradient(600px 350px at 0% 10%,rgba(77,159,255,.12),transparent)}
   .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
@@ -48,8 +44,6 @@
   h1{font-size:clamp(2.2rem,4.6vw,3.4rem);line-height:1.12;letter-spacing:-.03em;font-weight:800}
   h1 .hl{color:var(--accent)}
   .sub{color:var(--muted);font-size:1.15rem;margin:22px 0 30px;max-width:34rem}
-
-  /* Waitlist form */
   .waitlist{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;max-width:34rem}
   .waitlist label{font-size:.85rem;color:var(--muted);display:block;margin-bottom:6px;font-weight:600}
   .waitlist .row{display:flex;gap:10px;flex-wrap:wrap}
@@ -58,8 +52,6 @@
   .waitlist .btn{width:100%;margin-top:12px}
   .fine{font-size:.8rem;color:var(--muted);margin-top:10px}
   .success{display:none;background:rgba(37,211,102,.12);border:1px solid var(--accent);border-radius:12px;padding:18px;font-weight:600;color:var(--accent)}
-
-  /* Phone mockup */
   .phone{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:18px;max-width:340px;margin:0 auto;box-shadow:0 24px 60px rgba(0,0,0,.45)}
   .phone-head{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:12px}
   .avatar{width:36px;height:36px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;color:#04170B}
@@ -68,49 +60,23 @@
   .msg.in{background:var(--bg2);border:1px solid var(--line)}
   .msg.out{background:#0E3D24;border:1px solid #1E5C38;margin-left:auto}
   .msg time{display:block;font-size:.68rem;color:var(--muted);margin-top:4px;text-align:right}
-
-  /* Sections */
   h2{font-size:clamp(1.7rem,3.2vw,2.4rem);letter-spacing:-.02em;font-weight:800;text-align:center}
-  .lead{color:var(--muted);text-align:center;max-width:42rem;margin:14px auto 52px;font-size:1.08rem}
+  .lead{color:var(--muted);text-align:center;max-width:42rem;margin:14px auto 48px;font-size:1.08rem}
   .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
   .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px}
   .card .ico{font-size:1.8rem;margin-bottom:14px;display:block}
   .card h3{font-size:1.12rem;margin-bottom:8px}
   .card p{color:var(--muted);font-size:.95rem}
-
-  /* Stats strip */
+  .card a{color:var(--accent);text-decoration:none;font-weight:700;font-size:.92rem}
   .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:center;padding:36px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .stats b{font-size:2rem;color:var(--accent);display:block;letter-spacing:-.02em}
   .stats span{color:var(--muted);font-size:.9rem}
-
-  /* Steps */
-  .step{display:flex;gap:18px;align-items:flex-start}
-  .stepnum{flex-shrink:0;width:42px;height:42px;border-radius:12px;background:rgba(37,211,102,.14);border:1px solid rgba(37,211,102,.4);color:var(--accent);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
-
-  /* Pricing */
-  .price-card{position:relative;text-align:center}
-  .price-card.featured{border-color:var(--accent);box-shadow:0 0 40px rgba(37,211,102,.15)}
-  .badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--accent);color:#04170B;font-size:.75rem;font-weight:800;padding:4px 14px;border-radius:999px;white-space:nowrap}
-  .price{font-size:2.6rem;font-weight:800;letter-spacing:-.03em;margin:10px 0 2px}
-  .price small{font-size:1rem;color:var(--muted);font-weight:500}
-  .strike{color:var(--muted);text-decoration:line-through;font-size:1rem}
-  .plist{list-style:none;text-align:left;margin:22px 0;color:var(--muted);font-size:.93rem}
-  .plist li{padding:7px 0 7px 26px;position:relative}
-  .plist li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:800}
-
-  /* FAQ */
-  details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 22px;margin-bottom:12px}
-  summary{cursor:pointer;font-weight:700;font-size:1rem}
-  details p{color:var(--muted);margin-top:10px;font-size:.95rem}
-
   footer{border-top:1px solid var(--line);padding:36px 0;text-align:center;color:var(--muted);font-size:.88rem}
-
   @media(max-width:860px){
-    .hero-grid,.grid3,.grid2,.stats{grid-template-columns:1fr}
+    .hero-grid,.grid3,.stats{grid-template-columns:1fr}
     .phone{margin-top:12px}
     .nav-links a:not(.btn){display:none}
-    section{padding:64px 0}
+    section{padding:56px 0}
   }
 </style>
 </head>
@@ -118,12 +84,11 @@
 
 <nav>
   <div class="wrap nav-inner">
-    <a class="logo" href="#">Text<span>Lyra</span></a>
+    <a class="logo" href="index.html">Text<span>Lyra</span></a>
     <div class="nav-links">
-      <a href="#how">How it works</a>
-      <a href="#features">Features</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
+      <a href="index.html" class="active">Home</a>
+      <a href="services.html">Services</a>
+      <a href="pricing.html">Pricing</a>
       <a href="#waitlist" class="btn btn-primary btn-sm">Join the waitlist</a>
     </div>
   </div>
@@ -134,7 +99,7 @@
     <div>
       <span class="eyebrow">Founding spots open — Surrey · Metro Vancouver · anywhere you are</span>
       <h1>Your business, answering every customer. <span class="hl">24/7. Automatically.</span></h1>
-      <p class="sub">TextLyra puts an AI agent on your WhatsApp and SMS that replies instantly, books appointments, answers questions, and follows up on missed calls — so you never lose another customer to silence.</p>
+      <p class="sub">TextLyra puts an AI receptionist on your WhatsApp, SMS and phone line. It replies in seconds, books appointments, and rescues missed calls — so you never lose another customer to voicemail.</p>
 
       <form id="waitlist" class="waitlist" novalidate>
         <label for="wl-email">Get early access + founding-member pricing (50% off for life)</label>
@@ -142,13 +107,13 @@
           <input type="email" id="wl-email" name="email" placeholder="you@yourbusiness.com" required>
           <select id="wl-industry" name="industry">
             <option value="">Your industry…</option>
+            <option>Home services (plumbing, HVAC…)</option>
             <option>Salon / Barber / Beauty</option>
             <option>Dental / Medical / Clinic</option>
             <option>Restaurant / Café</option>
             <option>Auto repair / Detailing</option>
             <option>Real estate</option>
             <option>Gym / Fitness</option>
-            <option>Home services (plumbing, HVAC…)</option>
             <option>Other</option>
           </select>
         </div>
@@ -179,155 +144,37 @@
   </div>
 </div>
 
-<section id="how">
-  <div class="wrap">
-    <h2>Live in 48 hours. Zero tech skills needed.</h2>
-    <p class="lead">We set everything up for you. You keep running your business — TextLyra handles the conversations.</p>
-    <div class="grid3">
-      <div class="card step-card">
-        <div class="step"><div class="stepnum">1</div><div>
-          <h3>Tell us about your business</h3>
-          <p>A 15-minute call (or a form). Your services, prices, hours, FAQs, booking rules. That's all we need.</p>
-        </div></div>
-      </div>
-      <div class="card">
-        <div class="step"><div class="stepnum">2</div><div>
-          <h3>We train your AI agent</h3>
-          <p>We build an agent that talks like your best front-desk employee — on your WhatsApp number and SMS line.</p>
-        </div></div>
-      </div>
-      <div class="card">
-        <div class="step"><div class="stepnum">3</div><div>
-          <h3>It starts converting</h3>
-          <p>Missed calls get an instant text. Inquiries get answered. Appointments get booked. You get a weekly report.</p>
-        </div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="features" style="background:var(--bg2)">
+<section>
   <div class="wrap">
     <h2>Everything a great receptionist does. Without the salary.</h2>
-    <p class="lead">One AI agent, trained on your business, working every channel your customers already use.</p>
+    <p class="lead">Three ways TextLyra keeps your calendar full while you do the actual work.</p>
     <div class="grid3">
-      <div class="card"><span class="ico">📵</span><h3>Missed-call rescue</h3><p>Someone calls and you can't pick up? They instantly get a text: "Sorry we missed you — how can we help?" Most book right there.</p></div>
-      <div class="card"><span class="ico">📅</span><h3>Appointment booking</h3><p>Connects to your calendar (Google, Calendly, Fresha, and more). Books, reschedules, and sends reminders that cut no-shows.</p></div>
-      <div class="card"><span class="ico">💬</span><h3>Instant answers, 24/7</h3><p>Hours, prices, directions, availability — answered in seconds on WhatsApp or SMS, even at 11 PM on a Sunday.</p></div>
-      <div class="card"><span class="ico">⭐</span><h3>Review engine</h3><p>After every visit, happy customers get a friendly nudge to leave a Google review. Watch your rating climb.</p></div>
-      <div class="card"><span class="ico">🔁</span><h3>Smart follow-ups</h3><p>Quotes that went quiet, lapsed regulars, abandoned bookings — your agent follows up politely so you don't have to.</p></div>
-      <div class="card"><span class="ico">🧑‍💼</span><h3>Human handoff</h3><p>Anything sensitive or complex gets flagged and handed to you instantly, with the full conversation attached.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="industries">
-  <div class="wrap">
-    <h2>Built for businesses that live on their phone</h2>
-    <p class="lead">If your customers text, call, or WhatsApp you — TextLyra pays for itself with the first saved booking.</p>
-    <div class="grid3">
-      <div class="card"><span class="ico">💇</span><h3>Salons & barbers</h3><p>Fill cancellations automatically and stop losing walk-in requests while your hands are busy.</p></div>
-      <div class="card"><span class="ico">🦷</span><h3>Clinics & dentists</h3><p>Book cleanings and consults after hours; slash no-shows with automatic reminders.</p></div>
-      <div class="card"><span class="ico">🔧</span><h3>Home services</h3><p>You're under a sink — your agent is quoting the next job and booking the site visit.</p></div>
-      <div class="card"><span class="ico">🍕</span><h3>Restaurants</h3><p>Reservations, opening hours, group bookings, and event inquiries handled while you run service.</p></div>
-      <div class="card"><span class="ico">🏠</span><h3>Real estate</h3><p>Every listing inquiry answered in seconds and qualified before it hits your inbox.</p></div>
-      <div class="card"><span class="ico">🏋️</span><h3>Gyms & studios</h3><p>Trial-class bookings, membership questions, and win-back campaigns for lapsed members.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="pricing" style="background:var(--bg2)">
-  <div class="wrap">
-    <h2>Founding-member pricing</h2>
-    <p class="lead">Waitlist members lock in 50% off for life. Prices double at public launch. All prices in CAD.</p>
-    <div class="grid2" style="max-width:820px;margin:0 auto">
-      <div class="card price-card">
-        <h3>Starter</h3>
-        <div class="price"><span class="strike">$298</span> $149<small>/mo</small></div>
-        <ul class="plist">
-          <li>AI agent on WhatsApp <em>or</em> SMS</li>
-          <li>Missed-call text-back</li>
-          <li>FAQ + hours + pricing answers</li>
-          <li>Up to 300 conversations/mo</li>
-          <li>Weekly performance report</li>
-        </ul>
-        <a href="#waitlist" class="btn btn-ghost">Join waitlist</a>
+      <div class="card">
+        <span class="ico">💬</span>
+        <h3>AI text agent</h3>
+        <p>Answers WhatsApp & SMS in under 5 seconds, books appointments, texts back every missed call — 24/7.</p>
+        <p style="margin-top:12px"><a href="services.html">See how it works →</a></p>
       </div>
-      <div class="card price-card featured">
-        <span class="badge">MOST POPULAR</span>
-        <h3>Growth</h3>
-        <div class="price"><span class="strike">$598</span> $299<small>/mo</small></div>
-        <ul class="plist">
-          <li>Everything in Starter</li>
-          <li>WhatsApp <em>and</em> SMS</li>
-          <li>Calendar booking & reminders</li>
-          <li>Review requests & follow-ups</li>
-          <li>Unlimited conversations</li>
-          <li>Priority support</li>
-        </ul>
-        <a href="#waitlist" class="btn btn-primary">Join waitlist</a>
+      <div class="card">
+        <span class="ico">📞</span>
+        <h3>AI voice receptionist</h3>
+        <p>An AI that actually answers the phone when you can't — handles the call, books the job, texts you a summary.</p>
+        <p style="margin-top:12px"><a href="services.html#voice">Hear what it does →</a></p>
       </div>
-    </div>
-    <div class="card" style="max-width:820px;margin:20px auto 0;display:flex;gap:20px;align-items:center;flex-wrap:wrap;border-color:rgba(245,197,24,.45)">
-      <span class="ico" style="font-size:2.2rem;margin:0">📞</span>
-      <div style="flex:1;min-width:260px">
-        <h3 style="color:var(--gold)">Add-on: AI Voice Receptionist</h3>
-        <p style="color:var(--muted);font-size:.95rem">Don't just text back — have an AI that actually <b style="color:var(--ink)">answers the phone</b>, handles the call, books the job, and texts you a summary. Custom-built for your business.</p>
-      </div>
-      <div style="text-align:center;min-width:170px">
-        <div style="font-size:1.5rem;font-weight:800">$1,000 <small style="font-size:.85rem;color:var(--muted)">setup</small></div>
-        <div style="color:var(--muted)">+ $199/mo</div>
-      </div>
-    </div>
-    <div class="card" style="max-width:820px;margin:20px auto 0;display:flex;gap:20px;align-items:center;flex-wrap:wrap;border-color:rgba(77,159,255,.45)">
-      <span class="ico" style="font-size:2.2rem;margin:0">🌐</span>
-      <div style="flex:1;min-width:260px">
-        <h3 style="color:var(--accent2)">Add-on: Business Website</h3>
-        <p style="color:var(--muted);font-size:.95rem">No website, or one that embarrasses you? We build a fast, modern site with your AI receptionist <b style="color:var(--ink)">built right in</b> — every visitor can text or book you in one tap. Live in under a week.</p>
-      </div>
-      <div style="text-align:center;min-width:170px">
-        <div style="font-size:1.5rem;font-weight:800">$500 <small style="font-size:.85rem;color:var(--muted)">setup</small></div>
-        <div style="color:var(--muted)">+ $25/mo care & hosting</div>
+      <div class="card">
+        <span class="ico">🌐</span>
+        <h3>Business website</h3>
+        <p>No website, or one that embarrasses you? We build a fast, modern site with your AI receptionist built right in.</p>
+        <p style="margin-top:12px"><a href="pricing.html">See pricing →</a></p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="faq">
-  <div class="wrap" style="max-width:760px">
-    <h2>Questions, answered</h2>
-    <p class="lead">The things every owner asks before switching their front desk to AI.</p>
-    <details open>
-      <summary>Will it sound like a robot?</summary>
-      <p>No. Your agent is trained on your tone, your services, and your rules. Customers routinely thank it by name. And anything it isn't sure about gets handed to you instead of guessed.</p>
-    </details>
-    <details>
-      <summary>Do I need new software or a new phone number?</summary>
-      <p>No. TextLyra works with your existing WhatsApp Business number and can add a local SMS line. You keep using your phone exactly as you do today.</p>
-    </details>
-    <details>
-      <summary>What if the AI can't answer something?</summary>
-      <p>It says so honestly, takes the customer's details, and notifies you immediately with the full conversation. You reply once; it learns for next time.</p>
-    </details>
-    <details>
-      <summary>How long does setup take?</summary>
-      <p>Most businesses are live within 48 hours of their onboarding call. Founding members get white-glove setup — we do everything.</p>
-    </details>
-    <details>
-      <summary>Is there a contract?</summary>
-      <p>Month to month, cancel anytime. If it doesn't pay for itself in bookings in the first 30 days, we'll refund the month.</p>
-    </details>
-    <details>
-      <summary>Do you only work with businesses in Surrey?</summary>
-      <p>We're based in Surrey, BC and serve all of Metro Vancouver — but everything is set up remotely, so we work with businesses anywhere in Canada and the US. Founding pricing applies wherever you are.</p>
-    </details>
-  </div>
-</section>
-
-<section style="text-align:center;background:radial-gradient(600px 300px at 50% 0%,rgba(37,211,102,.12),transparent)">
+<section style="text-align:center;background:radial-gradient(600px 300px at 50% 0%,rgba(37,211,102,.12),transparent);padding-top:40px">
   <div class="wrap">
     <h2>Stop losing customers to voicemail.</h2>
-    <p class="lead">Join the waitlist today — founding spots are limited to 20 businesses per city.</p>
+    <p class="lead">Founding spots are limited to 20 businesses per city. Lock in 50% off for life.</p>
     <a href="#waitlist" class="btn btn-primary" style="font-size:1.1rem;padding:16px 38px">Claim your founding spot →</a>
   </div>
 </section>
@@ -341,9 +188,6 @@
 </footer>
 
 <script>
-  // Waitlist: posts to FormSubmit (free, no backend). Submissions arrive at the
-  // owner's inbox; the first-ever submission triggers a one-time FormSubmit
-  // activation email that must be confirmed.
   const FORM_ENDPOINT = "https://formsubmit.co/ajax/textlyra@gmail.com";
   const form = document.getElementById("waitlist");
   form.addEventListener("submit", async (e) => {

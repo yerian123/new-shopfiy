@@ -124,23 +124,25 @@ The Cutting Den, Eddy's, Jamals, BigBoss Hair Salon, Eden Hair Salon, Haides Sur
 (facebook.com/groups/businessownersofvancouver) + search: Surrey community groups, Langley
 small business, Fraser Valley business, BC contractors, Punjabi business owners Surrey.
 
-## 7. IN-PROGRESS / NEXT TASKS (where the last session stopped)
+## 7. IN-PROGRESS / NEXT TASKS (updated)
 
-The user's latest requests, partially done — **pick up here:**
-
-1. **[NOT DONE] Three separate lead Google Sheets** (user wants leads split):
-   Sheet 1 = Home services · Sheet 2 = Dental & clinics · Sheet 3 = Salons/barbers/etc.
-   Same columns as the existing Tracker + an "Offer" column. Seed with §6 leads, user scales
-   with a Chrome Maps-scraper extension. Then sort/prioritize per the lead matrix
-   (no website → lead with Website $500; failed call test + established → Voice bundle;
-   failed + small → Growth $299; <3.5★ or big office → skip).
-2. **[NOT DONE] Website restructure into multi-page site** — user wants a short homepage
-   plus separate pages instead of one long scroll. Plan: compact `index.html` (hero + chat
-   mockup + stats + 3 value cards + waitlist form), `services.html` (how-it-works, features,
-   industries), `pricing.html` (plans, add-ons, FAQ). Shared inline CSS per file
-   (self-contained, no build step), relative links, deployable as a folder to Cloudflare Pages.
-3. **[NOT DONE] Move hosting** off `cold-term-b973.yerianmainrai.workers.dev` (user dislikes
-   name in URL) → Cloudflare Pages project "textlyra" → textlyra.pages.dev.
+1. **[DONE] Three lead Google Sheets created**, ~90 verified businesses with PRIMARY OFFER
+   + pitch angle + upsell assigned per row (one sheet per caller):
+   - Leads 1 HOME SERVICES: docs.google.com/spreadsheets/d/1_Kv-jK3S0PLOk1YtTF77GAPNR-5ELa-QwN25ec9DbeE
+   - Leads 2 DENTAL & CLINICS: docs.google.com/spreadsheets/d/1wNNR9Q_0TpMTJA5U0-lsUVh_aR1ISKdsNCozP8d4ndM
+   - Leads 3 SALONS & BARBERS: docs.google.com/spreadsheets/d/19KU8H9OoJdYFVf7mQaMTxmxLD4pM3DhpOLOHhHmVdYI
+   User scales each to hundreds with a Chrome Maps-scraper extension (same columns).
+2. **[DONE] Caller Playbooks doc** (3 personalized niche scripts + objections + booking flow):
+   docs.google.com/document/d/1IRseO78q0oAZW-eLyMkTStRWQumOmiQUi_kOmfyYW8k
+   Placeholders to fill before callers start: [DEMO NUMBER] + Yerian's Calendly link.
+3. **[DONE] Website restructured multi-page**: `textlyra/index.html` (compact home),
+   `services.html`, `pricing.html` — synced to `docs/`. User must upload all 3 files
+   to hosting together.
+4. **[NOT DONE] Move hosting** off `cold-term-b973.yerianmainrai.workers.dev` (user dislikes
+   name in URL) → Cloudflare Pages project "textlyra" → textlyra.pages.dev + FormSubmit
+   activation via textlyra@gmail.com.
+5. **[NOT DONE] Demo agent build** (Build Guide §2.0–2.2) — the critical path. Callers
+   cannot start until the demo number works.
 4. User checklist (human-only): buy textlyra.com; FormSubmit activation; Interac auto-deposit;
    Wave account; FB group join requests; forward Gmail templates; Twilio/Anthropic/n8n accounts;
    build demo agent (Build Guide §2.0–2.2, "Apex Plumbing" prompt); Calendly demo slots;

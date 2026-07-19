@@ -22,6 +22,13 @@ selling across Metro Vancouver and remotely anywhere.
 | Business Website add-on | $500 setup + $25/mo | AI-built one-pager on Cloudflare Pages, agent embedded, max 2 edits/mo |
 | "Total Front Desk" bundle | $1,500 setup + $449/mo | All of the above |
 
+**Website upsell ladder (decided Jul 19):** client websites and the demo site do NOT include or
+mention AI. Sell Website $500 + $25/mo first → upsell "+AI texting on your site" $150/mo at the
+close (Yerian only — callers never pitch AI) → full Growth $299/mo → Voice $1,000 + $199/mo.
+Website sales script v2 (AI-free): docs.google.com/document/d/1ZFsI1Ga119tIU3NgOFczsc8-W1FLyyJObmI4BZfPfQY
+Demo site: `textlyra/demo-apex-plumbing.html` (fictional Apex Plumbing, fake number 604-555-0123,
+no AI mentions) — deploy to own Cloudflare Pages project; callers text this link mid-call.
+
 - Guarantee: if it doesn't book its own cost in 30 days → refund the month. Month-to-month.
 - **Payments: Interac e-Transfer to textlyra@gmail.com (auto-deposit ON) + Wave invoices (free) for
   first ~10 clients, then Stripe.** First month + setup collected before building.

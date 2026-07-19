@@ -3,41 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apex Plumbing — Surrey's 24/7 Plumbers | Book by Text in 30 Seconds</title>
-<meta name="description" content="Apex Plumbing: family-run plumbers serving Surrey, Langley, Delta & White Rock. Drain cleaning, water heaters, leak repair. Text us and get booked in 30 seconds — 24/7.">
+<title>Apex Plumbing — Surrey's Trusted Local Plumbers | Licensed & Insured</title>
+<meta name="description" content="Apex Plumbing: family-run plumbers serving Surrey, Langley, Delta & White Rock since 2011. Drain cleaning, water heaters, leak repair. Honest prices, same-day service.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%231D4ED8'/><text x='50' y='72' font-size='58' text-anchor='middle' font-family='Arial' font-weight='bold' fill='white'>A</text></svg>">
 <style>
   :root{
     --blue:#1D4ED8; --blue-dark:#173FB0; --navy:#0F1E45; --red:#E11D48;
     --bg:#F7F9FC; --card:#FFFFFF; --line:#E3E8F0; --ink:#16213A; --muted:#5B6B85;
-    --green:#25D366; --gold:#F59E0B;
+    --gold:#F59E0B;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;padding-bottom:74px}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;padding-bottom:70px}
   .wrap{max-width:1050px;margin:0 auto;padding:0 20px}
   section{padding:56px 0}
   h2{font-size:clamp(1.5rem,3vw,2.1rem);letter-spacing:-.02em;font-weight:800;text-align:center;margin-bottom:8px}
   .lead{color:var(--muted);text-align:center;max-width:38rem;margin:0 auto 36px}
   .btn{display:inline-block;padding:14px 26px;border-radius:12px;font-weight:800;text-decoration:none;font-size:1rem;transition:transform .12s ease}
   .btn:active{transform:scale(.97)}
-  .btn-text{background:var(--green);color:#04170B}
   .btn-call{background:var(--blue);color:#fff}
+  .btn-red{background:var(--red);color:#fff}
   .btn-ghost{border:2px solid var(--line);color:var(--ink);background:#fff}
 
-  /* Top emergency strip */
   .strip{background:var(--red);color:#fff;text-align:center;font-size:.85rem;font-weight:700;padding:7px 12px}
 
-  /* Nav */
   nav{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px}
   .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:800;font-size:1.2rem}
   .logo .mark{width:36px;height:36px;border-radius:10px;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.15rem}
-  .nav-cta{display:flex;gap:10px}
   .nav-cta .btn{padding:9px 16px;font-size:.9rem}
 
-  /* Hero */
-  .hero{background:linear-gradient(160deg,var(--navy) 0%,#1B3A8F 60%,var(--blue) 100%);color:#fff;padding:64px 0}
+  .hero{background:linear-gradient(160deg,var(--navy) 0%,#1B3A8F 60%,var(--blue) 100%);color:#fff;padding:70px 0}
   .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
   .pill{display:inline-block;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:6px 14px;font-size:.8rem;font-weight:700;letter-spacing:.05em;margin-bottom:18px}
   h1{font-size:clamp(2rem,4.5vw,3rem);line-height:1.13;letter-spacing:-.02em;font-weight:800}
@@ -46,16 +42,12 @@
   .trust{display:flex;gap:22px;margin-top:26px;flex-wrap:wrap;font-size:.85rem;color:#C9D6F5}
   .trust b{color:#fff}
 
-  /* Chat card in hero */
-  .chat{background:#fff;border-radius:22px;padding:16px;max-width:330px;margin:0 auto;box-shadow:0 24px 60px rgba(0,0,0,.35);color:var(--ink)}
-  .chat-head{display:flex;align-items:center;gap:10px;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:10px}
-  .chat-head .av{width:34px;height:34px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-weight:800;color:#04170B}
-  .chat-head small{color:var(--green);display:block;font-weight:700;font-size:.72rem}
-  .m{max-width:86%;padding:9px 13px;border-radius:13px;font-size:.85rem;margin-bottom:8px}
-  .m.in{background:var(--bg);border:1px solid var(--line)}
-  .m.out{background:#DDF7E7;border:1px solid #B5EACB;margin-left:auto}
+  .hero-card{background:#fff;border-radius:20px;padding:26px;max-width:340px;margin:0 auto;box-shadow:0 24px 60px rgba(0,0,0,.35);color:var(--ink);text-align:center}
+  .hero-card .bigphone{font-size:1.5rem;font-weight:800;color:var(--blue);display:block;margin:6px 0 2px}
+  .hero-card small{color:var(--muted)}
+  .hero-card .hours{margin-top:16px;border-top:1px solid var(--line);padding-top:14px;font-size:.88rem;color:var(--muted);text-align:left}
+  .hero-card .hours b{color:var(--ink)}
 
-  /* Services */
   .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
   .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
   .card .ico{font-size:1.7rem;display:block;margin-bottom:10px}
@@ -63,22 +55,23 @@
   .card p{color:var(--muted);font-size:.92rem}
   .card .price{color:var(--blue);font-weight:800;font-size:.95rem;margin-top:10px}
 
-  /* Why us */
   .why{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;text-align:center}
   .why div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 12px}
   .why b{display:block;font-size:1.35rem;color:var(--blue)}
   .why span{font-size:.82rem;color:var(--muted)}
 
-  /* Reviews */
+  .about{display:grid;grid-template-columns:.9fr 1.1fr;gap:36px;align-items:center}
+  .about-photo{background:linear-gradient(150deg,#1B3A8F,#4D9FFF);border-radius:20px;min-height:260px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:4rem}
+  .about h2{text-align:left}
+  .about p{color:var(--muted);margin-top:12px}
+
   .stars{color:var(--gold);letter-spacing:2px}
   .rev p{font-size:.93rem;color:var(--ink);margin:10px 0}
   .rev small{color:var(--muted)}
 
-  /* Area */
   .area{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
   .area span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 18px;font-size:.9rem;font-weight:600}
 
-  /* CTA band */
   .band{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;text-align:center;border-radius:20px;padding:44px 24px}
   .band h2{color:#fff}
   .band p{color:#C9D6F5;margin-bottom:22px}
@@ -87,29 +80,30 @@
   footer .powered{margin-top:10px;font-size:.78rem}
   footer .powered a{color:var(--blue);text-decoration:none;font-weight:700}
 
-  /* Sticky mobile action bar */
   .stickybar{position:fixed;bottom:0;left:0;right:0;z-index:50;display:flex;gap:10px;padding:12px 14px;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-top:1px solid var(--line)}
   .stickybar .btn{flex:1;text-align:center;padding:13px 10px;font-size:.95rem}
 
   @media(max-width:820px){
-    .hero-grid{grid-template-columns:1fr}
+    .hero-grid,.about{grid-template-columns:1fr}
     .grid3{grid-template-columns:1fr}
     .why{grid-template-columns:repeat(2,1fr)}
-    .nav-cta .btn-call{display:none}
     section{padding:44px 0}
+  }
+  @media(min-width:821px){
+    .stickybar{display:none}
+    body{padding-bottom:0}
   }
 </style>
 </head>
 <body>
 
-<div class="strip">🚨 Burst pipe? Flooding? We answer 24/7 — text or call now, arrive today.</div>
+<div class="strip">🚨 Plumbing emergency? We answer 24/7 — call (604) 555-0123</div>
 
 <nav>
   <div class="wrap nav-inner">
     <a class="logo" href="#"><span class="mark">🔧</span> Apex Plumbing</a>
     <div class="nav-cta">
       <a class="btn btn-call" href="tel:+16045550123">📞 (604) 555-0123</a>
-      <a class="btn btn-text" href="sms:+16045550123">💬 Text us</a>
     </div>
   </div>
 </nav>
@@ -118,27 +112,28 @@
   <div class="wrap hero-grid">
     <div>
       <span class="pill">FAMILY-RUN · SURREY, BC · SINCE 2011</span>
-      <h1>Plumbing problems fixed fast. Booked by text in 30 seconds.</h1>
-      <p class="sub">Drains, water heaters, leaks, emergencies — licensed, insured, and the only plumber in Surrey that answers every message in under 5 seconds, day or night.</p>
+      <h1>Honest plumbing, done right the first time.</h1>
+      <p class="sub">Drains, water heaters, leaks, and emergencies across Surrey and the South Fraser. Licensed, insured, and upfront about every price — that's why your neighbours keep our number on the fridge.</p>
       <div class="hero-ctas">
-        <a class="btn btn-text" href="sms:+16045550123">💬 Text us — instant reply</a>
+        <a class="btn btn-red" href="tel:+16045550123">📞 Call now — same-day service</a>
         <a class="btn btn-ghost" style="background:#fff" href="#services">See services & prices</a>
       </div>
       <div class="trust">
         <span>⭐ <b>4.9</b> on Google</span>
         <span>🛡️ <b>Licensed & insured</b></span>
-        <span>⚡ <b>Same-day</b> service</span>
+        <span>💵 <b>Upfront pricing</b></span>
       </div>
     </div>
-    <div class="chat" aria-hidden="true">
-      <div class="chat-head">
-        <div class="av">A</div>
-        <div><strong style="font-size:.95rem">Apex Plumbing</strong><small>● online — replies in seconds</small></div>
+    <div class="hero-card">
+      <small>CALL OR TEXT</small>
+      <span class="bigphone">(604) 555-0123</span>
+      <small>Real people. Fast answers.</small>
+      <div class="hours">
+        <b>Hours</b><br>
+        Mon–Sat: 7:00am – 6:00pm<br>
+        Sundays: emergencies only<br>
+        <b style="color:var(--red)">24/7 emergency line</b>
       </div>
-      <div class="m in">My water heater is leaking!! Can someone come today? 😰</div>
-      <div class="m out">Sorry to hear that! Yes — we can be there today. I have 1:30 PM or 4:00 PM open. What's your address?</div>
-      <div class="m in">4438 128 St. 1:30 works!</div>
-      <div class="m out">Booked ✅ Mike will be there at 1:30 PM. I've texted you his photo and a confirmation. Shut off the heater's cold-water valve if you can — here's a 20-sec video how.</div>
     </div>
   </div>
 </header>
@@ -146,7 +141,7 @@
 <section id="services">
   <div class="wrap">
     <h2>Services & honest price ranges</h2>
-    <p class="lead">No surprises. Exact quote before any work starts.</p>
+    <p class="lead">No surprises. You get an exact quote before any work starts.</p>
     <div class="grid3">
       <div class="card"><span class="ico">🚿</span><h3>Drain cleaning</h3><p>Slow drains, clogs, sewer backups — cleared with camera inspection.</p><div class="price">$180 – $350</div></div>
       <div class="card"><span class="ico">🔥</span><h3>Water heaters</h3><p>Repair or same-week replacement. Tank & tankless, all brands.</p><div class="price">$1,400 – $2,200 installed</div></div>
@@ -161,7 +156,7 @@
 <section style="padding-top:0">
   <div class="wrap">
     <div class="why">
-      <div><b>&lt;5 sec</b><span>reply time, 24/7 — text us right now and see</span></div>
+      <div><b>14 yrs</b><span>serving Surrey families</span></div>
       <div><b>4.9★</b><span>from 312 Google reviews</span></div>
       <div><b>Same day</b><span>for emergencies in Surrey & Langley</span></div>
       <div><b>$0</b><span>call-out fee when we do the work</span></div>
@@ -170,18 +165,29 @@
 </section>
 
 <section style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-  <div class="wrap">
-    <h2>What neighbours say</h2>
-    <p class="lead">Real reviews from Surrey homeowners.</p>
-    <div class="grid3">
-      <div class="card rev"><span class="stars">★★★★★</span><p>"Texted them at 9pm about a leaking pipe, had a confirmed appointment 2 minutes later. Mike showed up on time and fixed it same visit."</p><small>— Harpreet S., Fleetwood</small></div>
-      <div class="card rev"><span class="stars">★★★★★</span><p>"The instant text reply thing is unreal. Every other plumber I called went to voicemail. These guys answered before I finished my coffee."</p><small>— Dana M., Cloverdale</small></div>
-      <div class="card rev"><span class="stars">★★★★★</span><p>"Fair price, clean work, and they texted me a reminder plus the plumber's photo before arrival. Best service experience I've had."</p><small>— Jason T., White Rock</small></div>
+  <div class="wrap about">
+    <div class="about-photo">👨‍🔧</div>
+    <div>
+      <h2>Meet Mike & the Apex crew</h2>
+      <p>Apex Plumbing started in 2011 with one van and a simple rule: treat every home like it's your mom's house. Fourteen years later we're a crew of four Red Seal plumbers — still family-run, still answering our own phones, still leaving every job site cleaner than we found it.</p>
+      <p>We're not the biggest outfit in Surrey. We're the one your neighbour recommends.</p>
     </div>
   </div>
 </section>
 
 <section>
+  <div class="wrap">
+    <h2>What neighbours say</h2>
+    <p class="lead">Real reviews from Surrey homeowners.</p>
+    <div class="grid3">
+      <div class="card rev"><span class="stars">★★★★★</span><p>"Called at 8am about a leaking water heater, Mike was here by 1pm with the replacement. Price matched the quote to the dollar."</p><small>— Harpreet S., Fleetwood</small></div>
+      <div class="card rev"><span class="stars">★★★★★</span><p>"Third time using Apex. They show up when they say they will, explain everything, and don't invent problems. Rare these days."</p><small>— Dana M., Cloverdale</small></div>
+      <div class="card rev"><span class="stars">★★★★★</span><p>"Fair price, clean work, and they sent a photo of the plumber before he arrived so I knew who was coming. Great local company."</p><small>— Jason T., White Rock</small></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
   <div class="wrap">
     <h2>Where we work</h2>
     <p class="lead">Fast response across the South Fraser region.</p>
@@ -194,9 +200,9 @@
 <section style="padding-top:0">
   <div class="wrap">
     <div class="band">
-      <h2>Book in the next 30 seconds.</h2>
-      <p>Text us what's wrong. Our assistant replies instantly, gives you a price range, and books your slot — even at 2am.</p>
-      <a class="btn btn-text" style="font-size:1.05rem;padding:15px 34px" href="sms:+16045550123">💬 Text (604) 555-0123</a>
+      <h2>Need a plumber today?</h2>
+      <p>Call or text and talk to a real local plumber — not a call centre. Exact quote before any work starts.</p>
+      <a class="btn btn-red" style="font-size:1.05rem;padding:15px 34px" href="tel:+16045550123">📞 (604) 555-0123</a>
     </div>
   </div>
 </section>
@@ -205,13 +211,13 @@
   <div class="wrap">
     <p><strong>Apex Plumbing Ltd.</strong> · Licensed & insured · Serving Surrey, BC and the South Fraser region</p>
     <p>📞 (604) 555-0123 · ✉️ hello@apexplumbing.ca · Mon–Sat 7am–6pm · 24/7 emergencies</p>
-    <p class="powered">Website & AI receptionist by <a href="https://textlyra.pages.dev">TextLyra</a> — get yours →</p>
+    <p class="powered">Website by <a href="https://textlyra.pages.dev">TextLyra</a></p>
   </div>
 </footer>
 
 <div class="stickybar">
   <a class="btn btn-call" href="tel:+16045550123">📞 Call now</a>
-  <a class="btn btn-text" href="sms:+16045550123">💬 Text — replies in 5 sec</a>
+  <a class="btn btn-ghost" href="sms:+16045550123">💬 Text us</a>
 </div>
 
 </body>
